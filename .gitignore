@@ -1,0 +1,16 @@
+#Dist
+dist/
+
+# Node.js
+node_modules/
+npm-debug.log*
+package-lock.json
+
+# Optional npm cache directory
+.npm
+
+# Environment variables
+.env
+
+# IDEs and editors
+.vscode
