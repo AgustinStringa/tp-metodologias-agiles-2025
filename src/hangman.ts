@@ -1,5 +1,6 @@
 export class Hangman {
   word = "abuela";
+  lives = 7;
 
   tryLetter(letter: string) {
     if (
