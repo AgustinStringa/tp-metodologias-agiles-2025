@@ -1,43 +1,50 @@
-import { intentarLetra } from "../src/index";
+import { tryLetter } from "../src/index";
 
 test("funcion intentar letra debe estar definida", () => {
-  expect(intentarLetra).toBeDefined();
+  expect(tryLetter).toBeDefined();
 });
 
 test("al recibir '' intentar letra debe dar error", () => {
   expect(() => {
-    intentarLetra("");
+    tryLetter("");
   }).toThrow();
 });
 
 test("al recibir 'a' intentar letra debe retornar true or false", () => {
-  const letra = "a";
-  expect([true, false]).toContain(intentarLetra(letra));
+  const letter = "a";
+  expect([true, false]).toContain(tryLetter(letter));
 });
 
 test("al recibir 'b' intentar letra debe retornar true or false", () => {
-  const letra = "b";
-  expect([true, false]).toContain(intentarLetra(letra));
+  const letter = "b";
+  expect([true, false]).toContain(tryLetter(letter));
 });
 
 test("al recibir '#' intentar letra debe lanzar un error", () => {
-  const letra = "#";
+  const letter = "#";
   expect(() => {
-    intentarLetra(letra);
+    tryLetter(letter);
   }).toThrow();
 });
 
 test("al recibir '&' intentar letra debe lanzar un error", () => {
-  const letra = "&";
+  const letter = "&";
   expect(() => {
-    intentarLetra(letra);
+    tryLetter(letter);
   }).toThrow();
 });
 
 test("al recibir un número como argumento intentar letra debe lanzar un error", () => {
-  const letra = "6";
+  const letter = "6";
   expect(() => {
-    intentarLetra(letra);
+    tryLetter(letter);
+  }).toThrow();
+});
+
+test("al recibir más de un carácter como argumento intentar letra debe lanzar error", () => {
+  const letter = "aa";
+  expect(() => {
+    tryLetter(letter);
   }).toThrow();
 });
 
