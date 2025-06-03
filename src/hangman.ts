@@ -8,6 +8,7 @@ export class Hangman {
       throw new Error("La función debe contener solo una letra válida");
     }
 
+    this.lives -= 1;
     return this.word.includes(letter);
   }
 }
