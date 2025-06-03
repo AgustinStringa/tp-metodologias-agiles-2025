@@ -81,7 +81,7 @@ describe("al intentar una letra, dependiendo si está o no en la palabra, deber�
     expect(hangman.tryLetter(wrongLetter)).toBe(false);
   });
 
-  test("si la palabra es perro, e intento la letra p, la cantidad de vidas debería verse disminuida en 1", () => {
+  test("si la palabra es perro, e intento la letra j, la cantidad de vidas debería verse disminuida en 1", () => {
     hangman.tryLetter(wrongLetter);
     expect(hangman.lives).toEqual(initialLives - 1);
   });
