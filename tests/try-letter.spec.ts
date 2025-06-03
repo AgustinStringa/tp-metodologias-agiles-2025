@@ -65,10 +65,11 @@ test("al recibir 'ñ' -letra existente en idioma castellano- tryLetter() debe re
   expect([true, false]).toContain(hangman.tryLetter(letter));
 });
 
-describe("al intentar una letra y fallar, la cantidad de vidas debe disminuir en 1", () => {
+describe("al intentar una letra, dependiendo si está o no en la palabra, debería cambiar o no el número de vidas respectivamente", () => {
   let hangman: Hangman;
   let initialLives: number;
-  const letter = "j";
+  const wrongLetter = "j";
+  const rightLetter = "p";
 
   beforeEach(() => {
     hangman = new Hangman();
@@ -77,12 +78,17 @@ describe("al intentar una letra y fallar, la cantidad de vidas debe disminuir en
   });
 
   test("si la palabra es perro e intento la letra j, debería devolver false", () => {
-    expect(hangman.tryLetter(letter)).toBe(false);
+    expect(hangman.tryLetter(wrongLetter)).toBe(false);
   });
 
-  test("si la palabra es perro, e intento la letra j, la cantidad de vidas debería verse disminuida en 1", () => {
-    hangman.tryLetter(letter);
+  test("si la palabra es perro, e intento la letra p, la cantidad de vidas debería verse disminuida en 1", () => {
+    hangman.tryLetter(wrongLetter);
     expect(hangman.lives).toEqual(initialLives - 1);
+  });
+
+  test("si la palabra es perro, e intento la letra p, la cantidad de vidas debería mantenerse igual.", () => {
+    hangman.tryLetter(rightLetter);
+    expect(hangman.lives).toEqual(initialLives);
   });
 });
 
