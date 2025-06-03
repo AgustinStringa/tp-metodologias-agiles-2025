@@ -25,25 +25,27 @@ test("al recibir 'b' tryLetter() debe retornar true or false", () => {
   expect([true, false]).toContain(hangman.tryLetter(letter));
 });
 
-test("al recibir '#' tryLetter() debe lanzar un error", () => {
-  const letter = "#";
-  expect(() => {
-    hangman.tryLetter(letter);
-  }).toThrow();
-});
+describe("la palabra no tiene que poseer números o caracteres especiales", () => {
+  test("al recibir '#' tryLetter() debe lanzar un error", () => {
+    const letter = "#";
+    expect(() => {
+      hangman.tryLetter(letter);
+    }).toThrow();
+  });
 
-test("al recibir '&' tryLetter() debe lanzar un error", () => {
-  const letter = "&";
-  expect(() => {
-    hangman.tryLetter(letter);
-  }).toThrow();
-});
+  test("al recibir '&' tryLetter() debe lanzar un error", () => {
+    const letter = "&";
+    expect(() => {
+      hangman.tryLetter(letter);
+    }).toThrow();
+  });
 
-test("al recibir un número como argumento tryLetter() debe lanzar un error", () => {
-  const letter = "6";
-  expect(() => {
-    hangman.tryLetter(letter);
-  }).toThrow();
+  test("al recibir un número como argumento tryLetter() debe lanzar un error", () => {
+    const letter = "6";
+    expect(() => {
+      hangman.tryLetter(letter);
+    }).toThrow();
+  });
 });
 
 test("al recibir más de un carácter como argumento tryLetter() debe lanzar error", () => {
@@ -57,3 +59,9 @@ test("al recibir 'A' -letra en mayúscula- tryLetter() debe retornar true or fal
   const letter = "A";
   expect([true, false]).toContain(hangman.tryLetter(letter));
 });
+
+test("al recibir 'ñ' -letra existente en idioma castellano- tryLetter() debe retornar true or false", () => {
+  const letter = "ñ";
+  expect([true, false]).toContain(hangman.tryLetter(letter));
+});
+

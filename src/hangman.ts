@@ -4,7 +4,7 @@ export class Hangman {
 
   tryLetter(letter: string) {
     letter = letter.toLowerCase();
-    if (!/^[a-z]$/.test(letter)) {
+    if (!/^[a-zñ]$/.test(letter)) {
       throw new Error("La función debe contener solo una letra válida");
     }
 
