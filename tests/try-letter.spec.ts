@@ -65,3 +65,10 @@ test("al recibir 'ñ' -letra existente en idioma castellano- tryLetter() debe re
   expect([true, false]).toContain(hangman.tryLetter(letter));
 });
 
+test("si la palabra es perro e intento la letra j, debería devolver false", () => {
+  const hangman = new Hangman();
+  hangman.word = "perro";
+  const letter = "j";
+  expect(hangman.tryLetter(letter)).toBe(false);
+});
+
