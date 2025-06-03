@@ -86,9 +86,18 @@ describe("al intentar una letra, dependiendo si está o no en la palabra, deber�
     expect(hangman.lives).toEqual(initialLives - 1);
   });
 
-  test("si la palabra es perro, e intento la letra p, la cantidad de vidas debería mantenerse igual.", () => {
+  test("si la palabra es perro, e intento la letra p, la cantidad de vidas debería mantenerse igual", () => {
     hangman.tryLetter(rightLetter);
     expect(hangman.lives).toEqual(initialLives);
   });
 });
 
+test("si la cantidad de vidas resulta igual a 0, no se puede intentar una letra", () => {
+  hangman = new Hangman();
+  hangman.word = "cachorro";
+  hangman.lives = 0;
+
+  expect(() => {
+    hangman.tryLetter("z");
+  }).toThrow("No tienes más vidas");
+});
