@@ -5,50 +5,55 @@ beforeEach(() => {
   hangman = new Hangman();
 });
 
-test("funcion intentar letra debe estar definida", () => {
+test("funcion tryLetter() debe estar definida", () => {
   expect(hangman.tryLetter).toBeDefined();
 });
 
-test("al recibir '' intentar letra debe dar error", () => {
+test("al recibir '' tryLetter() debe dar error", () => {
   expect(() => {
     hangman.tryLetter("");
   }).toThrow();
 });
 
-test("al recibir 'a' intentar letra debe retornar true or false", () => {
+test("al recibir 'a' tryLetter() debe retornar true or false", () => {
   const letter = "a";
   expect([true, false]).toContain(hangman.tryLetter(letter));
 });
 
-test("al recibir 'b' intentar letra debe retornar true or false", () => {
+test("al recibir 'b' tryLetter() debe retornar true or false", () => {
   const letter = "b";
   expect([true, false]).toContain(hangman.tryLetter(letter));
 });
 
-test("al recibir '#' intentar letra debe lanzar un error", () => {
+test("al recibir '#' tryLetter() debe lanzar un error", () => {
   const letter = "#";
   expect(() => {
     hangman.tryLetter(letter);
   }).toThrow();
 });
 
-test("al recibir '&' intentar letra debe lanzar un error", () => {
+test("al recibir '&' tryLetter() debe lanzar un error", () => {
   const letter = "&";
   expect(() => {
     hangman.tryLetter(letter);
   }).toThrow();
 });
 
-test("al recibir un número como argumento intentar letra debe lanzar un error", () => {
+test("al recibir un número como argumento tryLetter() debe lanzar un error", () => {
   const letter = "6";
   expect(() => {
     hangman.tryLetter(letter);
   }).toThrow();
 });
 
-test("al recibir más de un carácter como argumento intentar letra debe lanzar error", () => {
+test("al recibir más de un carácter como argumento tryLetter() debe lanzar error", () => {
   const letter = "aa";
   expect(() => {
     hangman.tryLetter(letter);
   }).toThrow();
+});
+
+test("al recibir 'A' -letra en mayúscula- tryLetter() debe retornar true or false", () => {
+  const letter = "A";
+  expect([true, false]).toContain(hangman.tryLetter(letter));
 });

@@ -3,14 +3,11 @@ export class Hangman {
   lives = 7;
 
   tryLetter(letter: string) {
-    if (
-      letter === "" ||
-      letter === "#" ||
-      letter === "&" ||
-      letter === "aa" ||
-      letter === "6"
-    )
-      throw new Error("la función debe contener solo letras");
+    letter = letter.toLowerCase();
+    if (!/^[a-z]$/.test(letter)) {
+      throw new Error("La función debe contener solo una letra válida");
+    }
+
     return true;
   }
 }
