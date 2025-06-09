@@ -10,6 +10,8 @@ export class Hangman {
     return this.word.includes(letter);
   }
 
+  getLettersCount() {}
+
   tryLetter(letter: string) {
     if (this.lives === 0) throw new Error("No tienes más vidas.");
     letter = letter.toLowerCase();
