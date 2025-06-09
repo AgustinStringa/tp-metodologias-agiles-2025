@@ -1,7 +1,11 @@
 export class Hangman {
   word = "abuela";
   lives = 7;
+  words = ["abuela", "gato"];
 
+  constructor() {
+    this.word = this.words[Math.floor(Math.random() * this.words.length)];
+  }
   substractLive() {
     this.lives -= 1;
   }
