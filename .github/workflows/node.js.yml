@@ -2,9 +2,9 @@ name: Hangman CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "setup-ci-server" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "setup-ci-server" ]
 
 jobs:
   build-and-test:
