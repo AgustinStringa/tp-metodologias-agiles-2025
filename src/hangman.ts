@@ -1,10 +1,11 @@
+import { Dictionary } from "./dictionary";
+
 export class Hangman {
-  word = "abuela";
+  word: string;
   lives = 7;
-  words = ["abuela", "gato"];
 
   constructor() {
-    this.word = this.words[Math.floor(Math.random() * this.words.length)];
+    this.word = Dictionary.getRandomWord().solution;
   }
   substractLive() {
     this.lives -= 1;
