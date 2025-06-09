@@ -15,3 +15,7 @@ test("la palabra a adivinar debe ser de tipo string", () => {
 test("la palabra a adivinar debe ser distinta de  '' ", () => {
   expect(hangman.word).not.toBe("");
 });
+
+test("Al iniciar el juego la palabra a adivinar debe tener una cantidad de letras", () => {
+  expect(hangman.getLettersCount).toBeDefined();
+});
