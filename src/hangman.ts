@@ -19,6 +19,8 @@ export class Hangman {
 
   getLettersCount(): number {
     return 0;
+    return 4;
+  }
 
   normalize(text: string): string {
     return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
