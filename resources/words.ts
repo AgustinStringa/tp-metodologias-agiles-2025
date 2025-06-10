@@ -1,4 +1,4 @@
-let words = [
+const words = [
   { id: 1, solution: "nieve" },
   { id: 2, solution: "hueso" },
   { id: 3, solution: "titan" },
