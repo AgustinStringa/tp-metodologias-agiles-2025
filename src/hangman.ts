@@ -1,7 +1,12 @@
+import { Dictionary } from "./dictionary";
+
 export class Hangman {
-  word = "abuela";
+  word: string;
   lives = 7;
 
+  constructor() {
+    this.word = Dictionary.getRandomWord().solution;
+  }
   substractLive() {
     this.lives -= 1;
   }
@@ -9,6 +14,8 @@ export class Hangman {
   isLetter(letter: string) {
     return this.word.includes(letter);
   }
+
+  getLettersCount() {}
 
   tryLetter(letter: string) {
     if (this.lives === 0) throw new Error("No tienes más vidas.");
