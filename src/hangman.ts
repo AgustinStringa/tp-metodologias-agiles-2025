@@ -15,7 +15,9 @@ export class Hangman {
     return this.word.includes(letter);
   }
 
-  getLettersCount() {}
+  getLettersCount(): number {
+    return 0;
+  }
 
   tryLetter(letter: string) {
     if (this.lives === 0) throw new Error("No tienes más vidas.");
