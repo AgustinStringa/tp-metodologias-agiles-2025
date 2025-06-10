@@ -101,3 +101,8 @@ test("si la cantidad de vidas resulta igual a 0, no se puede intentar una letra"
     hangman.tryLetter("z");
   }).toThrow("No tienes más vidas");
 });
+test("al recibir una letra con tilde (ej: 'a), tryLetter() debería comportarse como si fuera sin tilde (ej: 'a'", () => {
+  hangman.rawWord = "camión";
+  hangman.word = hangman.normalize(hangman.rawWord);
+  expect(hangman.tryLetter("o")).toBe(true);
+});
