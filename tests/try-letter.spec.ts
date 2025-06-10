@@ -107,7 +107,12 @@ describe("La cantidad de letras debe mantenerse igual con el correr de los inten
     hangman.tryLetter("B");
     expect(hangman.getLettersCount()).toBe(4);
   });
+  test("Si la palabra es 'ave' la cantidad de letras debe ser 3", () => {
+    hangman.word = "ave";
+    expect(hangman.getLettersCount()).toBe(3);
+  });
 });
+
 test("al recibir una letra con tilde (ej: 'a), tryLetter() debería comportarse como si fuera sin tilde (ej: 'a'", () => {
   hangman.rawWord = "camión";
   hangman.word = hangman.normalize(hangman.rawWord);
