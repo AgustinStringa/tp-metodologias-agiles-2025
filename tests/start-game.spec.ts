@@ -20,6 +20,10 @@ test("Al iniciar el juego la palabra a adivinar debe tener una cantidad de letra
   expect(hangman.getLettersCount).toBeDefined();
 });
 
+test("La cantidad de letras de la palabra a adivinar no debe ser un número negativo", () => {
+  expect(hangman.getLettersCount()).not.toBeLessThan(0);
+});
+
 test("Si inicio un juego y luego inicio otro juego, las palabras a adivinar deben ser distintas", () => {
   const word1 = hangman.word;
   hangman = new Hangman();
