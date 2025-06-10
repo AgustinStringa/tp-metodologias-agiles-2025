@@ -18,7 +18,7 @@ export class Hangman {
   }
 
   getLettersCount(): number {
-    return this.rawWord.length;
+    return this.word.length;
   }
 
   normalize(text: string): string {
