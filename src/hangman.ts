@@ -2,10 +2,12 @@ import { Dictionary } from "./dictionary";
 
 export class Hangman {
   word: string;
+  rawWord: string;
   lives = 7;
 
   constructor() {
-    this.word = Dictionary.getRandomWord().solution;
+    this.rawWord = Dictionary.getRandomWord().solution;
+    this.word = this.normalize(this.rawWord.toLowerCase());
   }
   substractLive() {
     this.lives -= 1;
@@ -17,6 +19,9 @@ export class Hangman {
 
   getLettersCount(): number {
     return 0;
+
+  normalize(text: string): string {
+    return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   }
 
   tryLetter(letter: string) {
