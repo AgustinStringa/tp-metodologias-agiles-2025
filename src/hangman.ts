@@ -4,11 +4,13 @@ export class Hangman {
   word: string;
   rawWord: string;
   lives = 7;
+  triedLetters: string[] = [];
 
   constructor() {
     this.rawWord = Dictionary.getRandomWord().solution;
     this.word = this.normalize(this.rawWord.toLowerCase());
   }
+
   substractLive() {
     this.lives -= 1;
   }
@@ -33,8 +35,12 @@ export class Hangman {
     }
 
     const result = this.isLetter(letter);
-
+    this.triedLetters.push(letter);
     if (!result) this.substractLive();
     return result;
+  }
+
+  getTriedLetters() {
+    return this.triedLetters;
   }
 }
