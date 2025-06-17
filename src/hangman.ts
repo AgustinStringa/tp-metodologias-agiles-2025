@@ -5,6 +5,7 @@ export class Hangman {
   rawWord: string;
   lives = 7;
   triedLetters: string[] = [];
+  rightLetters: string[] = [];
 
   constructor() {
     this.rawWord = Dictionary.getRandomWord().solution;
@@ -36,11 +37,18 @@ export class Hangman {
 
     const result = this.isLetter(letter);
     this.triedLetters.push(letter);
-    if (!result) this.substractLive();
+
+    if (result) this.rightLetters.push(letter);
+    else this.substractLive();
+
     return result;
   }
 
   getTriedLetters() {
     return this.triedLetters;
+  }
+
+  getRightLetters() {
+    return this.rightLetters;
   }
 }
