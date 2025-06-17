@@ -2,7 +2,7 @@ name: Hangman CI
 
 on:
   push:
-    branches: ["main", "static-code-analysis"]
+    branches: ["main", "static-code-analysis", "master"]
   pull_request:
     branches: ["main"]
 
