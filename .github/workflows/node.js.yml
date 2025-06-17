@@ -2,7 +2,7 @@ name: Hangman CI
 
 on:
   push:
-    branches: ["main"]
+    branches: ["main", "static-code-analysis"]
   pull_request:
     branches: ["main"]
 
@@ -32,3 +32,15 @@ jobs:
         with:
           name: coverage-report-node-${{ matrix.node-version }}
           path: coverage/
+
+  sonarqube:
+    name: SonarQube
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v5
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
