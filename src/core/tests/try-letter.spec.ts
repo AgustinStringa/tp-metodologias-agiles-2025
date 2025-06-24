@@ -1,4 +1,4 @@
-import { Hangman } from "../src/hangman";
+import { Hangman } from "../hangman";
 
 let hangman: Hangman;
 beforeEach(() => {
