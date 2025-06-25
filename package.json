@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "jest",
     "lint": "eslint .",
-    "testCucumber": "cucumber-js"
+    "testCucumber": "npx cross-env TS_NODE_PROJECT=tsconfig.cucumber.json cucumber-js --require-module ts-node/register --require features/**/*.ts"
   },
   "private": true,
   "dependencies": {
@@ -29,6 +29,7 @@
     "@cucumber/cucumber": "^11.3.0",
     "@types/jasmine": "~5.1.0",
     "@types/jest": "^30.0.0",
+    "@types/node": "^24.0.4",
     "angular-eslint": "^20.1.1",
     "eslint": "^9.28.0",
     "jasmine-core": "~5.7.0",
@@ -39,6 +40,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "ts-jest": "^29.4.0",
+    "ts-node": "^10.9.2",
     "typescript": "~5.8.2",
     "typescript-eslint": "^8.35.0"
   }
