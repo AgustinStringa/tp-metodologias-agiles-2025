@@ -1,5 +1,11 @@
 import { Dictionary } from "./dictionary";
 
+enum GameStatus {
+  IN_PROGRESS = "IN PROGRESS",
+  WON = "WON",
+  LOST = "LOST",
+}
+
 export class Hangman {
   word: string;
   rawWord: string;
@@ -16,15 +22,15 @@ export class Hangman {
     this.lives -= 1;
   }
 
-  getGameStatus() {
-    if (this.lives === 0) return "LOST";
+  getGameStatus(): GameStatus {
+    if (this.lives === 0) return GameStatus.LOST;
 
     const won = Array.from(this.word).every((l) =>
       this.rightLetters.includes(l)
     );
 
-    if (won) return "WON";
-    return "IN PROGRESS";
+    if (won) return GameStatus.WON;
+    return GameStatus.IN_PROGRESS;
   }
 
   isLetter(letter: string) {
@@ -40,9 +46,10 @@ export class Hangman {
   }
 
   tryLetter(letter: string) {
-    const gameStatus = this.getGameStatus();
-    if (gameStatus !== "IN PROGRESS") {
-      if (gameStatus === "LOST") throw new Error("No tienes más vidas.");
+    const gameStatus: GameStatus = this.getGameStatus();
+    if (gameStatus !== GameStatus.IN_PROGRESS) {
+      if (gameStatus === GameStatus.LOST)
+        throw new Error("No tienes más vidas.");
       throw new Error("El juego fue finalizado.");
     }
 
