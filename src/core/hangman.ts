@@ -18,8 +18,13 @@ export class Hangman {
 
   getGameStatus() {
     if (this.lives === 0) return "LOST";
-    if (this.word.length !== this.rightLetters.length) return "IN PROGRESS";
-    return "WON";
+
+    const won = Array.from(this.word).every((l) =>
+      this.rightLetters.includes(l)
+    );
+
+    if (won) return "WON";
+    return "IN PROGRESS";
   }
 
   isLetter(letter: string) {

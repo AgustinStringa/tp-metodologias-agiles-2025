@@ -43,3 +43,16 @@ test('Si la palabra es auto, intento T, A el estado del juego debe ser "IN PROGR
   const expectedGameStatus = "IN PROGRESS";
   expect(gameStatus).toEqual(expectedGameStatus);
 });
+
+test('Si la palabra es carro, intento C, A, R, O, el estado del juego debe ser "WON"', () => {
+  hangman.word = "carro";
+
+  hangman.tryLetter("C");
+  hangman.tryLetter("A");
+  hangman.tryLetter("R");
+  hangman.tryLetter("O");
+
+  const gameStatus = hangman.getGameStatus();
+  const expectedGameStatus = "WON";
+  expect(gameStatus).toEqual(expectedGameStatus);
+});
