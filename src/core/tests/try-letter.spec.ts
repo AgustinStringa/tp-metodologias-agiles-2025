@@ -12,7 +12,7 @@ test("funcion tryLetter() debe estar definida", () => {
 test("al recibir '' tryLetter() debe dar error", () => {
   expect(() => {
     hangman.tryLetter("");
-  }).toThrow();
+  }).toThrow("El caracter proporcionado no es válido.");
 });
 
 test("al recibir 'a' tryLetter() debe retornar true or false", () => {
@@ -30,21 +30,21 @@ describe("la palabra no tiene que poseer números o caracteres especiales", () =
     const letter = "#";
     expect(() => {
       hangman.tryLetter(letter);
-    }).toThrow();
+    }).toThrow("El caracter proporcionado no es válido.");
   });
 
   test("al recibir '&' tryLetter() debe lanzar un error", () => {
     const letter = "&";
     expect(() => {
       hangman.tryLetter(letter);
-    }).toThrow();
+    }).toThrow("El caracter proporcionado no es válido.");
   });
 
   test("al recibir un número como argumento tryLetter() debe lanzar un error", () => {
     const letter = "6";
     expect(() => {
       hangman.tryLetter(letter);
-    }).toThrow();
+    }).toThrow("El caracter proporcionado no es válido.");
   });
 });
 
@@ -52,7 +52,7 @@ test("al recibir más de un carácter como argumento tryLetter() debe lanzar err
   const letter = "aa";
   expect(() => {
     hangman.tryLetter(letter);
-  }).toThrow();
+  }).toThrow("El caracter proporcionado no es válido.");
 });
 
 test("al recibir 'A' -letra en mayúscula- tryLetter() debe retornar true or false", () => {
