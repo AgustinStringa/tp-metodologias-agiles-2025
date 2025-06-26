@@ -16,6 +16,10 @@ export class Hangman {
     this.lives -= 1;
   }
 
+  getGameStatus() {
+    return "WON";
+  }
+
   isLetter(letter: string) {
     return this.word.includes(letter);
   }
