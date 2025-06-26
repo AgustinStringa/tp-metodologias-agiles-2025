@@ -18,6 +18,7 @@ export class Hangman {
 
   getGameStatus() {
     if (this.lives === 0) return "LOST";
+    if (this.word.length !== this.rightLetters.length) return "IN PROGRESS";
     return "WON";
   }
 

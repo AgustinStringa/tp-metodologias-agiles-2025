@@ -6,8 +6,9 @@ beforeEach(() => {
   hangman = new Hangman();
 });
 
-test('Si la palabra es AUTO, intento A, U, T, O, el estado del juego debe ser "WON"', () => {
-  hangman.word = "AUTO";
+test('Si la palabra es "auto", intento A, U, T, O, el estado del juego debe ser "WON"', () => {
+  hangman.word = "auto";
+
   hangman.tryLetter("A");
   hangman.tryLetter("U");
   hangman.tryLetter("T");
@@ -18,8 +19,8 @@ test('Si la palabra es AUTO, intento A, U, T, O, el estado del juego debe ser "W
   expect(gameStatus).toEqual(expectedGameStatus);
 });
 
-test('Si la palabra es AUTO, intento J, K, L, M, N, Z, H el estado del juego debe ser "LOST"', () => {
-  hangman.word = "AUTO";
+test('Si la palabra es auto, intento J, K, L, M, N, Z, H el estado del juego debe ser "LOST"', () => {
+  hangman.word = "auto";
   hangman.tryLetter("J");
   hangman.tryLetter("K");
   hangman.tryLetter("L");
@@ -30,5 +31,15 @@ test('Si la palabra es AUTO, intento J, K, L, M, N, Z, H el estado del juego deb
 
   const gameStatus = hangman.getGameStatus();
   const expectedGameStatus = "LOST";
+  expect(gameStatus).toEqual(expectedGameStatus);
+});
+
+test('Si la palabra es auto, intento T, A el estado del juego debe ser "IN PROGRESS"', () => {
+  hangman.word = "auto";
+  hangman.tryLetter("T");
+  hangman.tryLetter("A");
+
+  const gameStatus = hangman.getGameStatus();
+  const expectedGameStatus = "IN PROGRESS";
   expect(gameStatus).toEqual(expectedGameStatus);
 });
