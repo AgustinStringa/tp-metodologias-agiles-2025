@@ -17,6 +17,7 @@ export class Hangman {
   }
 
   getGameStatus() {
+    if (this.lives === 0) return "LOST";
     return "WON";
   }
 
