@@ -79,4 +79,8 @@ export class Hangman {
   getRightLetters() {
     return this.rightLetters;
   }
+
+  getWrongLetters() {
+    return [];
+  }
 }

@@ -45,3 +45,9 @@ describe("mostrar las letras que acerté", () => {
     expect(hangman.getRightLetters()).toEqual(["a", "t"]);
   });
 });
+
+describe("ver letradas intentadas incorrectas", () => {
+  test("al iniciar el juego la función getWrongLetters() debe retornar []", () => {
+    expect(hangman.getWrongLetters()).toEqual([]);
+  });
+});
