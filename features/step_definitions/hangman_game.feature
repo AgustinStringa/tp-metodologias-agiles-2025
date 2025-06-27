@@ -8,7 +8,7 @@ Scenario Outline: Lets win
 
   Examples:
     | word | firstLetter | secondLetter | thirdLetter | fourthLetter | answer |
-    | AUTO | A           | U            | T           | O            | WON    |
-    | PILA | P           | I            | L           | A            | WON    |
-    | LOTE | L           | O            | T           | E            | WON    |
-    | CERO | C           | E            | R           | O            | WON    |
+    | auto | A           | U            | T           | O            | WON    |
+    | pila | P           | I            | L           | A            | WON    |
+    | lote | L           | O            | T           | E            | WON    |
+    | cero | C           | E            | R           | O            | WON    |

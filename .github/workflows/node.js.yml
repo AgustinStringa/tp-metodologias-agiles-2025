@@ -2,7 +2,7 @@ name: Hangman CI
 
 on:
   push:
-    branches: ["master", "migrate-to-angular-project"]
+    branches: ["master"]
   pull_request:
     branches: ["master"]
 
@@ -32,6 +32,9 @@ jobs:
         with:
           name: coverage-report-node-${{ matrix.node-version }}
           path: coverage/
+
+      - name: Run Cucumber tests
+        run: npm run testCucumber
 
   sonarqube:
     name: SonarQube
