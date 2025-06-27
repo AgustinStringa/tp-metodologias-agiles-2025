@@ -84,4 +84,10 @@ describe("Ver mensaje de derrota de juego", () => {
     const actualAnswer = hangman.getAnswer();
     expect(actualAnswer).toBe(hangman.word);
   });
+
+  test("Si el juego está en curso, getAnswer() debería lanzar un error", () => {
+    expect(() => {
+      hangman.getAnswer();
+    }).toThrow("El juego está en curso.");
+  });
 });

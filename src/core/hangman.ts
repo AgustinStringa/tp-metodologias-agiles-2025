@@ -87,6 +87,9 @@ export class Hangman {
   }
 
   getAnswer(): string {
+    if (this.getGameStatus() === GameStatus.IN_PROGRESS)
+      throw new Error("El juego está en curso.");
+
     return this.word;
   }
 }
