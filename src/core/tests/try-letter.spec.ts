@@ -101,6 +101,7 @@ test("si la cantidad de vidas resulta igual a 0, no se puede intentar una letra"
     hangman.tryLetter("z");
   }).toThrow("No tienes más vidas");
 });
+
 describe("La cantidad de letras debe mantenerse igual con el correr de los intentos (es decir pérdida de vidas)", () => {
   test("si la palabra es 'auto' e intento 'B' la cantidad de letras debe ser 4.", () => {
     hangman.word = "auto";
@@ -117,4 +118,13 @@ test("al recibir una letra con tilde (ej: 'a), tryLetter() debería comportarse 
   hangman.rawWord = "camión";
   hangman.word = hangman.normalize(hangman.rawWord);
   expect(hangman.tryLetter("o")).toBe(true);
+});
+
+test('si la palabra es "carro", intento B, y luego otra vez B, tryLetter() debería lanzar un error.', () => {
+  hangman.word = "carro";
+  hangman.tryLetter("B");
+
+  expect(() => {
+    hangman.tryLetter("B");
+  }).toThrow("La letra fue ingresada previamente.");
 });

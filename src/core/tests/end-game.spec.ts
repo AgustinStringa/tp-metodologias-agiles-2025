@@ -67,12 +67,3 @@ test('Si la palabra es "pez", intento P, E, Z y luego A, tryLetter() debería la
     hangman.tryLetter("A");
   }).toThrow("El juego fue finalizado.");
 });
-
-test('Si la palabra es "carro", intento B, y luego otra vez B, tryLetter() debería lanzar un error.', () => {
-  hangman.word = "carro";
-  hangman.tryLetter("B");
-
-  expect(() => {
-    hangman.tryLetter("B");
-  }).toThrow("La letra fue ingresada previamente.");
-});
