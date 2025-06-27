@@ -33,7 +33,7 @@ export class Hangman {
     return GameStatus.IN_PROGRESS;
   }
 
-  isLetter(letter: string) {
+  isLetterInWord(letter: string) {
     return this.word.includes(letter);
   }
 
@@ -63,7 +63,7 @@ export class Hangman {
       throw new Error("La letra fue ingresada previamente.");
     }
 
-    const result = this.isLetter(letter);
+    const result = this.isLetterInWord(letter);
     this.triedLetters.push(letter);
 
     if (result) this.rightLetters.push(letter);
