@@ -77,4 +77,11 @@ describe("Ver mensaje de derrota de juego", () => {
     const actualAnswer = hangman.getAnswer();
     expect(actualAnswer).toBe(hangman.word);
   });
+
+  test('Si la palabra es "colza" y pierdo todas mis vidas, getAnswer() debería retornar "colza"', () => {
+    hangman.word = "colza";
+    hangman.lives = 0;
+    const actualAnswer = hangman.getAnswer();
+    expect(actualAnswer).toBe(hangman.word);
+  });
 });

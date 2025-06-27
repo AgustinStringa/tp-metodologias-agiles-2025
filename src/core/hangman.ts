@@ -87,6 +87,6 @@ export class Hangman {
   }
 
   getAnswer(): string {
-    return "auto";
+    return this.word;
   }
 }
