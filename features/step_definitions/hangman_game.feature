@@ -43,3 +43,16 @@ Scenario Outline: Win is not so easy
     | escuela  | SEZUXLBCHA     | WON    |
     | relojero | RQWLOZJE       | WON    |
 
+
+@losing
+Scenario Outline: Try, fail, try again... lose
+    Given word is "<word>"
+    When I try "<letters>"
+    Then I should see "<answer>"
+
+  Examples:
+    | word     | letters         | answer |
+    | camino   | CAMXYZULET      | LOST   |
+    | naranja  | NARZXYWBTS      | LOST   |
+    | pelota   | PEXYLOZKQWÑ     | LOST   |
+    | guitarra | GITZXRMQUKWF    | LOST   |
