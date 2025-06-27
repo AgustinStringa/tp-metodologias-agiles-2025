@@ -81,6 +81,8 @@ export class Hangman {
   }
 
   getWrongLetters(): string[] {
-    return this.triedLetters;
+    return this.triedLetters.filter(
+      (letter) => !this.rightLetters.includes(letter)
+    );
   }
 }

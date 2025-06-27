@@ -51,9 +51,16 @@ describe("ver letradas intentadas incorrectas", () => {
     expect(hangman.getWrongLetters()).toEqual([]);
   });
 
-  test('si la palabra es "auto" e intento "p", la función getWrongLetters(), debería retornar un array que solo contiene a "P"', () => {
+  test('si la palabra es "auto" e intento "p", la función getWrongLetters(), debería retornar ["p"]', () => {
     hangman.word = "auto";
     hangman.tryLetter("p");
+    expect(hangman.getWrongLetters()).toEqual(["p"]);
+  });
+
+  test('si la palabra es "auto" e intento "p", "a", la función getWrongLetters(), debería retornar ["p"]', () => {
+    hangman.word = "auto";
+    hangman.tryLetter("p");
+    hangman.tryLetter("a");
     expect(hangman.getWrongLetters()).toEqual(["p"]);
   });
 });
