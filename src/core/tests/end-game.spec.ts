@@ -57,7 +57,7 @@ test('Si la palabra es "carro", intento C, A, R, O, el estado del juego debe ser
   expect(gameStatus).toEqual(expectedGameStatus);
 });
 
-test('Si la palabra es "pez", intento P, E, Z y luego A, tryLetter() debería retornar un error.', () => {
+test('Si la palabra es "pez", intento P, E, Z y luego A, tryLetter() debería lanzar un error.', () => {
   expect(() => {
     hangman.word = "pez";
 
@@ -68,3 +68,11 @@ test('Si la palabra es "pez", intento P, E, Z y luego A, tryLetter() debería re
   }).toThrow("El juego fue finalizado.");
 });
 
+test('Si la palabra es "carro", intento B, y luego otra vez B, tryLetter() debería lanzar un error.', () => {
+  hangman.word = "carro";
+  hangman.tryLetter("B");
+
+  expect(() => {
+    hangman.tryLetter("B");
+  }).toThrow("La letra fue ingresada previamente.");
+});

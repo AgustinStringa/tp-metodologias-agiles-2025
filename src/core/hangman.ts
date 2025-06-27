@@ -48,14 +48,19 @@ export class Hangman {
   tryLetter(letter: string) {
     const gameStatus: GameStatus = this.getGameStatus();
     if (gameStatus !== GameStatus.IN_PROGRESS) {
-      if (gameStatus === GameStatus.LOST)
+      if (gameStatus === GameStatus.LOST) {
         throw new Error("No tienes más vidas.");
+      }
       throw new Error("El juego fue finalizado.");
     }
 
     letter = letter.toLowerCase();
     if (!/^[a-zñ]$/.test(letter)) {
       throw new Error("El caracter proporcionado no es válido.");
+    }
+
+    if (this.triedLetters.includes(letter)) {
+      throw new Error("La letra fue ingresada previamente.");
     }
 
     const result = this.isLetter(letter);
