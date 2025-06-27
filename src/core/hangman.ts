@@ -80,7 +80,7 @@ export class Hangman {
     return this.rightLetters;
   }
 
-  getWrongLetters() {
-    return [];
+  getWrongLetters(): string[] {
+    return this.triedLetters;
   }
 }

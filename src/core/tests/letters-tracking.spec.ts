@@ -50,4 +50,10 @@ describe("ver letradas intentadas incorrectas", () => {
   test("al iniciar el juego la función getWrongLetters() debe retornar []", () => {
     expect(hangman.getWrongLetters()).toEqual([]);
   });
+
+  test('si la palabra es "auto" e intento "p", la función getWrongLetters(), debería retornar un array que solo contiene a "P"', () => {
+    hangman.word = "auto";
+    hangman.tryLetter("p");
+    expect(hangman.getWrongLetters()).toEqual(["p"]);
+  });
 });
