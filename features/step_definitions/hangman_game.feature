@@ -3,12 +3,25 @@ Feature: Playing Hangman
 
 Scenario Outline: Lets win
     Given word is "<word>"
-    When I try "<firstLetter>", "<secondLetter>", "<thirdLetter>", "<fourthLetter>" 
+    When I try "<letters>" 
     Then I should see "<answer>"
 
   Examples:
-    | word | firstLetter | secondLetter | thirdLetter | fourthLetter | answer |
-    | auto | A           | U            | T           | O            | WON    |
-    | pila | P           | I            | L           | A            | WON    |
-    | lote | L           | O            | T           | E            | WON    |
-    | cero | C           | E            | R           | O            | WON    |
+    | word | letters  | answer |
+    | auto | AUTO     | WON    |
+    | pila | PILA     | WON    |
+    | lote | LOTE     | WON    |
+    | cero | CERO     | WON    |
+
+
+Scenario Outline: Lets lose
+    Given word is "<word>"
+    When I try "<letters>"
+    Then I should see "<answer>"
+
+  Examples:
+    | word | letters   | answer |
+    | auto | ZPWKLMN   | LOST   |
+    | pila | WRYTFOQ   | LOST   |
+    | lote | AUIFJWÑ   | LOST   |
+    | cero | AIUSPLJ   | LOST   |

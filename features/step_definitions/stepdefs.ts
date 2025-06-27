@@ -7,15 +7,13 @@ Given("word is {string}", function (word) {
   this["hangman"]["word"] = word;
 });
 
-When(
-  "I try {string}, {string}, {string}, {string}",
-  function (fistLetter, secondLetter, thirdLetter, fourthLetter) {
-    this["hangman"].tryLetter(fistLetter);
-    this["hangman"].tryLetter(secondLetter);
-    this["hangman"].tryLetter(thirdLetter);
-    this["hangman"].tryLetter(fourthLetter);
-  }
-);
+When("I try {string}", function (lettersString: string) {
+  const letters = lettersString.split("");
+
+  letters.forEach((letter: string) => {
+    this["hangman"].tryLetter(letter);
+  });
+});
 
 Then("I should see {string}", function (expectedAnswer) {
   this["actualAnswer"] = this["hangman"].getGameStatus();
