@@ -85,4 +85,8 @@ export class Hangman {
       (letter) => !this.rightLetters.includes(letter)
     );
   }
+
+  getAnswer(): string {
+    return "auto";
+  }
 }

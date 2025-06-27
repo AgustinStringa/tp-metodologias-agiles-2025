@@ -69,3 +69,12 @@ test('Si la palabra es "pez", intento P, E, Z y luego A, tryLetter() debería la
     hangman.tryLetter("A");
   }).toThrow("El juego fue finalizado.");
 });
+
+describe("Ver mensaje de derrota de juego", () => {
+  test('Si la palabra es "auto" y pierdo todas mis vidas, getAnswer() debería retornar "auto"', () => {
+    hangman.word = "auto";
+    hangman.lives = 0;
+    const actualAnswer = hangman.getAnswer();
+    expect(actualAnswer).toBe(hangman.word);
+  });
+});
