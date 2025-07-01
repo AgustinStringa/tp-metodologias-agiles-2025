@@ -2,6 +2,10 @@
   "default": {
     "formatOptions": {
       "snippetInterface": "synchronous"
-    }
+    },
+    "require": [
+      "e2e/steps/**/*.ts",
+      "e2e/support/**/*.ts"
+    ]
   }
 }

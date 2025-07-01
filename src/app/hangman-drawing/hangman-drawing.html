@@ -1,0 +1,41 @@
+<svg width="200" height="250" class="hangman-svg">
+  <!-- Base del soporte -->
+  <line x1="10" y1="240" x2="150" y2="240" stroke="black" stroke-width="4" />
+
+  <!-- Poste vertical -->
+  <line x1="40" y1="240" x2="40" y2="20" stroke="black" stroke-width="4" />
+
+  <!-- Poste horizontal -->
+  <line x1="40" y1="20" x2="120" y2="20" stroke="black" stroke-width="4" />
+
+  <!-- Cuerda -->
+  <line x1="120" y1="20" x2="120" y2="50" stroke="black" stroke-width="4" />
+
+  @if (fails > 0) {
+  <!-- Cabeza -->
+  <circle cx="120" cy="70" r="20" stroke="black" stroke-width="3" fill="none" />
+
+  } @if (fails > 1) {
+  <!-- Cuerpo -->
+  <line x1="120" y1="90" x2="120" y2="150" stroke="black" stroke-width="3" />
+
+  } @if (fails > 2) {
+  <!-- Brazo izquierdo -->
+  <line x1="120" y1="100" x2="90" y2="130" stroke="black" stroke-width="3" />
+
+  } @if (fails > 3) {
+  <!-- Brazo derecho -->
+  <line x1="120" y1="100" x2="150" y2="130" stroke="black" stroke-width="3" />
+
+  } @if (fails > 4) {
+  <!-- Pierna izquierda -->
+  <line x1="120" y1="150" x2="90" y2="190" stroke="black" stroke-width="3" />
+
+  } @if (fails > 5) {
+  <!-- Pierna derecha -->
+  <line x1="120" y1="150" x2="150" y2="190" stroke="black" stroke-width="3" />
+
+  } @if (fails > 6) {
+  <!--TODO tachar o poner sangre-->
+  }
+</svg>

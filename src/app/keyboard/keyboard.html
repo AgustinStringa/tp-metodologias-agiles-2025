@@ -1,0 +1,9 @@
+<div class="keyboard">
+  @for (row of keyRows; track row){
+  <div class="row">
+    @for (key of row; track key) {
+    <button (click)="pressKey(key)" id="{{key}}">{{ key }}</button>
+    }
+  </div>
+  }
+</div>

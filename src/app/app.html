@@ -1,1 +1,6 @@
-<router-outlet />
+<router-outlet></router-outlet>
+
+<p id="game-status" style="text-align: center; font-size: 40px">WON</p>
+<app-hangman-drawing [fails]="numeroDeErrores"></app-hangman-drawing>
+<app-word-display></app-word-display>
+<app-keyboard></app-keyboard>
