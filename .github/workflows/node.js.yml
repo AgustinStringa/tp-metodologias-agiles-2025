@@ -46,6 +46,11 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
+      - name: Start Angular server in background
+        run: |
+          npx http-server ./dist/tp-metodologias-agiles-2025 -p 4200 &
+          sleep 5
+
       - name: Run Cucumber tests
         run: npm run testCucumber
 
