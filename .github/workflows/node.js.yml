@@ -15,17 +15,27 @@ jobs:
         node-version: [20.x, 22.x]
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-      - run: npm ci
-      - run: npm run lint
-      - run: npm run build
 
-      - run: npm test -- --coverage
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint code
+        run: npm run lint
+
+      - name: Build project
+        run: npm run build
+
+      - name: Run unit tests with coverage
+        run: npm test -- --coverage
+
       - name: Upload coverage report
         if: always()
         uses: actions/upload-artifact@v4
@@ -33,16 +43,22 @@ jobs:
           name: coverage-report-node-${{ matrix.node-version }}
           path: coverage/
 
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
       - name: Run Cucumber tests
         run: npm run testCucumber
 
   sonarqube:
     name: SonarQube
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v5
         env:
