@@ -46,19 +46,8 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
-      - name: Start Angular server
-        run: npm start &
-      - name: Wait for server
-        run: |
-          n=0
-          until curl --output /dev/null --silent --head --fail http://localhost:4200 || [ $n -eq 10 ]; do
-            echo "Waiting for Angular server..."
-            sleep 3
-            n=$((n+1))
-          done
-
-      - name: Run Cucumber tests
-        run: npm run testCucumber
+      - name: Run Cucumber tests with server
+        run: npm run start:e2e
 
   sonarqube:
     name: SonarQube

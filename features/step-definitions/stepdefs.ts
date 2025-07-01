@@ -29,9 +29,9 @@ When(
   async function (lettersString: string) {
     const letters = lettersString.split("");
 
-    letters.forEach(async (letter: string) => {
+    for (const letter of letters) {
       await this["actor"].clickLetter(letter);
-    });
+    }
   }
 );
 

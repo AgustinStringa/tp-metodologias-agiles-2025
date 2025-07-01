@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "jest",
     "lint": "eslint .",
-    "testCucumber": "npx cross-env TS_NODE_PROJECT=tsconfig.cucumber.json cucumber-js --require-module ts-node/register --require features/**/*.ts"
+    "testCucumber": "npx cross-env TS_NODE_PROJECT=tsconfig.cucumber.json cucumber-js --require-module ts-node/register --require features/**/*.ts",
+    "start:e2e": "start-server-and-test start http://localhost:4200 testCucumber"
   },
   "private": true,
   "dependencies": {
@@ -41,6 +42,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "playwright": "^1.53.2",
+    "start-server-and-test": "^2.0.12",
     "ts-jest": "^29.4.0",
     "ts-node": "^10.9.2",
     "typescript": "~5.8.2",
