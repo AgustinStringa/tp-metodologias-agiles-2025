@@ -48,8 +48,13 @@ jobs:
 
       - name: Start Angular server in background
         run: |
-          npx http-server ./dist/tp-metodologias-agiles-2025 -p 4200 &
-          sleep 5
+          npx http-server ./dist/your-app-name -p 4200 &
+          n=0
+          until curl --output /dev/null --silent --head --fail http://localhost:4200 || [ $n -eq 10 ]; do
+            echo "Waiting for server to start..."
+            sleep 3
+            n=$((n+1))
+          done
 
       - name: Run Cucumber tests
         run: npm run testCucumber
