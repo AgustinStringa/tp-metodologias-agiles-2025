@@ -46,12 +46,13 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
-      - name: Start Angular server in background
+      - name: Start Angular server
+        run: npm start &
+      - name: Wait for server
         run: |
-          npx http-server ./dist/your-app-name -p 4200 &
           n=0
           until curl --output /dev/null --silent --head --fail http://localhost:4200 || [ $n -eq 10 ]; do
-            echo "Waiting for server to start..."
+            echo "Waiting for Angular server..."
             sleep 3
             n=$((n+1))
           done
