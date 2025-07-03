@@ -13,7 +13,6 @@ import { WordDisplayComponent } from "./word-display/word-display";
     WordDisplayComponent,
   ],
   templateUrl: "./app.html",
-  styleUrl: "./app.css",
 })
 export class App {
   protected title = "tp-metodologias-agiles-2025";
