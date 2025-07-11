@@ -1,4 +1,6 @@
 import { Component } from "@angular/core";
+import { GameService } from "../core/services/game.service";
+import { Hangman } from "../core/hangman";
 import { HangmanDrawingComponent } from "./hangman-drawing/hangman-drawing";
 import { KeyboardComponent } from "./keyboard/keyboard";
 import { RouterOutlet } from "@angular/router";
@@ -16,10 +18,19 @@ import { WordDisplayComponent } from "./word-display/word-display";
 })
 export class App {
   protected title = "tp-metodologias-agiles-2025";
-  pressedKey = "";
-  numeroDeErrores = 0;
+  errorsCount = 0;
+  hangman: Hangman;
+  triedLetters: string[] = [];
+  rightLetters: string[] = [];
+
+  constructor(private gameService: GameService) {
+    this.hangman = this.gameService.createHangman();
+  }
 
   onKey(letter: string) {
-    this.pressedKey = letter;
+    const result = this.hangman.tryLetter(letter);
+    if (!result) this.errorsCount++;
+    this.rightLetters = this.hangman.getRightLetters();
+    this.triedLetters = this.hangman.getTriedLetters();
   }
 }

@@ -1,7 +1,7 @@
 <div class="word-display">
   @for (letter of word; track letter) {
-  <span class="letter">
-    @if (guessedLetters.includes(letter)) { {{ letter }} }
-  </span>
+  <span class="letter"
+    >{{ guessedLetters.includes(letter) ? letter : '' }}</span
+  >
   }
 </div>

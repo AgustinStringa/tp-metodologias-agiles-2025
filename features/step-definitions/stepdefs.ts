@@ -2,13 +2,10 @@ import { Given, Then, When } from "@cucumber/cucumber";
 import assert from "assert";
 import { Hangman } from "../../src/core/hangman";
 
+// hangman-game feature
 Given("word is {string}", function (word) {
   this["hangman"] = new Hangman();
   this["hangman"]["word"] = word;
-});
-
-Given("word with UI is {string}", async function (word) {
-  await this["actor"].launchAppWithWord(word);
 });
 
 When("I try {string}", function (lettersString: string) {
@@ -24,6 +21,11 @@ Then("I should see {string}", function (expectedAnswer) {
   assert.strictEqual(this["actualAnswer"], expectedAnswer);
 });
 
+// hangman-game-ui feature
+Given("word with UI is {string}", async function (word) {
+  await this["actor"].launchAppWithWord(word);
+});
+
 When(
   "I press the buttons for {string}",
   async function (lettersString: string) {
@@ -37,5 +39,11 @@ When(
 
 Then("the message should be {string}", async function (expectedAnswer) {
   const actual = await this["actor"].getMessage();
+  assert.strictEqual(actual, expectedAnswer);
+});
+
+// disable-tried-letter
+Then("word display should look like {string}", async function (expectedAnswer) {
+  const actual = await this["actor"].getWordDisplay();
   assert.strictEqual(actual, expectedAnswer);
 });

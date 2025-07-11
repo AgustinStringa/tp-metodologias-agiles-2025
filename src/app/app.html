@@ -1,6 +1,21 @@
 <router-outlet></router-outlet>
 
-<p id="game-status" style="text-align: center; font-size: 40px">WON</p>
-<app-hangman-drawing [fails]="numeroDeErrores"></app-hangman-drawing>
-<app-word-display></app-word-display>
-<app-keyboard></app-keyboard>
+<app-hangman-drawing [fails]="errorsCount"></app-hangman-drawing>
+
+<app-word-display
+  [word]="hangman.word"
+  [guessedLetters]="hangman.getRightLetters()"
+></app-word-display>
+
+@if (hangman.getGameStatus() === "IN PROGRESS"){
+<app-keyboard
+  (keyPressed)="onKey($event)"
+  [triedLetters]="this.triedLetters"
+  [rightLetters]="this.rightLetters"
+></app-keyboard>
+
+} @else {
+<p id="game-status" style="text-align: center; font-size: 40px">
+  {{this.hangman.getGameStatus()}}
+</p>
+}

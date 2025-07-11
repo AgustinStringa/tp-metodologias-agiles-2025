@@ -8,7 +8,7 @@ enum GameStatus {
 
 export class Hangman {
   word: string;
-  rawWord: string;
+  rawWord?: string;
   lives = 7;
   triedLetters: string[] = [];
   rightLetters: string[] = [];

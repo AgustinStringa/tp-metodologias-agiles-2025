@@ -6,6 +6,6 @@ import { Component, Input } from "@angular/core";
   styleUrls: ["./word-display.css"],
 })
 export class WordDisplayComponent {
-  @Input() word = "CASA";
-  @Input() guessedLetters: string[] = ["C", "S"];
+  @Input() word!: string;
+  @Input() guessedLetters: string[] = [];
 }

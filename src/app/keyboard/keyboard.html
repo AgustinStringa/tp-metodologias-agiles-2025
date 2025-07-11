@@ -2,7 +2,17 @@
   @for (row of keyRows; track row){
   <div class="row">
     @for (key of row; track key) {
-    <button (click)="pressKey(key)" id="{{key}}">{{ key }}</button>
+    <button
+      (click)="pressKey(key)"
+      id="{{key}}"
+      [disabled]="isTried(key.toLowerCase())"
+      [ngClass]="{
+            'right': isRight(key.toLowerCase()),
+            'wrong': isWrong(key.toLowerCase())
+          }"
+    >
+      {{ key }}
+    </button>
     }
   </div>
   }

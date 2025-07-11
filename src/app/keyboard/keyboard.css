@@ -18,10 +18,18 @@ button {
   color: white;
   border: none;
   border-radius: 6px;
-  cursor: pointer;
   min-width: 40px;
 }
 
-button:hover {
+button:hover:enabled {
   background-color: #1565c0;
+  cursor: pointer;
+}
+
+.right {
+  background-color: #4caf50;
+}
+
+.wrong {
+  background-color: #9e9e9e;
 }
