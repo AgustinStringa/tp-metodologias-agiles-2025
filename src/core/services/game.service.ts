@@ -13,8 +13,8 @@ export class GameService {
     const game = new Hangman();
     if (this.initialWord) {
       game.word = this.initialWord;
-    } else if (typeof window !== "undefined" && (window as any).INITIAL_WORD) {
-      game.word = (window as any).INITIAL_WORD;
+    } else if (typeof window !== "undefined" && window.INITIAL_WORD) {
+      game.word = window.INITIAL_WORD;
     }
     return game;
   }
