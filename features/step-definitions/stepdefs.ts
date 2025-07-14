@@ -42,8 +42,23 @@ Then("the message should be {string}", async function (expectedAnswer) {
   assert.strictEqual(actual, expectedAnswer);
 });
 
-// disable-tried-letter
+// display-right-letters
 Then("word display should look like {string}", async function (expectedAnswer) {
+  // me aseguro de que haya tiempo para que se rendericen las letras
+  await this["actor"].page.waitForFunction(
+    () => {
+      const spans = document.querySelectorAll(".word-display span");
+      let result = "";
+      spans.forEach((span) => {
+        const content = span.textContent?.trim().toUpperCase();
+        result += content === "" ? "_" : content;
+      });
+      return result;
+    },
+    { timeout: 7000 },
+    expectedAnswer
+  );
+
   const actual = await this["actor"].getWordDisplay();
   assert.strictEqual(actual, expectedAnswer);
 });
