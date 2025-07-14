@@ -1,0 +1,35 @@
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+}
+
+button {
+  padding: 12px;
+  font-size: 18px;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  min-width: 40px;
+}
+
+button:hover:enabled {
+  background-color: #1565c0;
+  cursor: pointer;
+}
+
+.right {
+  background-color: #4caf50;
+}
+
+.wrong {
+  background-color: #9e9e9e;
+}
