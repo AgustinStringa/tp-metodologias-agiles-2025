@@ -25,7 +25,7 @@ export class App {
   rightLetters: string[] = [];
 
   // eslint-disable-next-line @angular-eslint/prefer-inject
-  constructor(private gameService: GameService) {
+  constructor(private readonly gameService: GameService) {
     this.hangman = this.gameService.createHangman();
   }
 

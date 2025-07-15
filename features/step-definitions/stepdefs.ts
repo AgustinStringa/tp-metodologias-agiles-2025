@@ -1,5 +1,6 @@
 import { Given, Then, When } from "@cucumber/cucumber";
 import assert from "assert";
+import { expect } from "@playwright/test";
 import { Hangman } from "../../src/core/hangman";
 
 // hangman-game feature
@@ -55,12 +56,17 @@ Then("word display should look like {string}", async function (expectedAnswer) {
       });
       return result;
     },
-    { timeout: 7000 },
-    expectedAnswer
+    { timeout: 7000 }
   );
 
   const actual = await this["actor"].getWordDisplay();
   assert.strictEqual(actual, expectedAnswer);
+});
+
+// disable-tried-letter
+Then("the button for {string} should look disabled", async function (letter) {
+  const button = this["actor"].page.locator(`button#${letter}`);
+  await expect(button).toBeDisabled();
 });
 
 // drawing-hangman
