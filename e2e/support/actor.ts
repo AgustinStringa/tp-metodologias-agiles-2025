@@ -39,6 +39,32 @@ export class Actor {
     return wordDisplay;
   }
 
+  async countHangmanParts(): Promise<number> {
+    const partIds = [
+      "hangman_head",
+      "hangman_chest",
+      "hangman_leftarm",
+      "hangman_rightarm",
+      "hangman_leftleg",
+      "hangman_rightleg",
+      "hangman_killmark",
+    ];
+
+    let count = 0;
+
+    await this.page.waitForSelector(".hangman-svg", { timeout: 3000 });
+
+    for (const id of partIds) {
+      const el = await this.page.$(`#${id}`);
+      if (el !== null) {
+        count++;
+      } else {
+        break;
+      }
+    }
+    return count;
+  }
+
   async stop() {
     await this.browser?.close();
   }

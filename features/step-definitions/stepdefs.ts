@@ -62,3 +62,10 @@ Then("word display should look like {string}", async function (expectedAnswer) {
   const actual = await this["actor"].getWordDisplay();
   assert.strictEqual(actual, expectedAnswer);
 });
+
+// drawing-hangman
+Then("I should see {string} parts of hangman", async function (count: string) {
+  const countNumber = Number.parseInt(count);
+  const actualBodyCount = await this["actor"].countHangmanParts();
+  assert.strictEqual(actualBodyCount, countNumber);
+});
