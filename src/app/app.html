@@ -7,13 +7,20 @@
   [guessedLetters]="hangman.getRightLetters()"
 ></app-word-display>
 
-@if (hangman.getGameStatus() === "IN PROGRESS"){
+@if (hangman.getGameStatus() === "IN PROGRESS") {
 <app-keyboard
   (keyPressed)="onKey($event)"
   [triedLetters]="this.triedLetters"
   [rightLetters]="this.rightLetters"
 ></app-keyboard>
-
 } @else {
 <p id="game-status">{{this.hangman.getGameStatus()}}</p>
+} @if (hangman.getGameStatus() === "LOST") {
+<div class="overlay-game-over">
+  <p class="overlay-text">💀 ¡PERDISTE! 💀</p>
+</div>
+} @if (hangman.getGameStatus() === "WON") {
+<div class="overlay-game-won">
+  <p class="overlay-text-won">🎉 ¡GANASTE! 🎉</p>
+</div>
 }
