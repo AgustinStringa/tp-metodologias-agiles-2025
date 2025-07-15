@@ -21,6 +21,15 @@ button {
   min-width: 40px;
 }
 
+@media (width < 500px) {
+  button {
+    padding: 10px;
+    font-size: 12px;
+    border-radius: 6px;
+    min-width: 30px;
+  }
+}
+
 button:hover:enabled {
   background-color: #1565c0;
   cursor: pointer;
