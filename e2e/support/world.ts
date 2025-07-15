@@ -1,4 +1,4 @@
-import { setWorldConstructor, Before, IWorldOptions } from "@cucumber/cucumber";
+import { setWorldConstructor, IWorldOptions } from "@cucumber/cucumber";
 import { Actor } from "./actor";
 
 export class CustomWorld {
