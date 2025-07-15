@@ -68,3 +68,10 @@ Then("the button for {string} should look disabled", async function (letter) {
   const button = this["actor"].page.locator(`button#${letter}`);
   await expect(button).toBeDisabled();
 });
+
+// drawing-hangman
+Then("I should see {string} parts of hangman", async function (count: string) {
+  const countNumber = Number.parseInt(count);
+  const actualBodyCount = await this["actor"].countHangmanParts();
+  assert.strictEqual(actualBodyCount, countNumber);
+});
