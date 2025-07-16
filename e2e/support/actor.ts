@@ -32,10 +32,13 @@ export class Actor {
     const labels = this.page.locator(".word-display span");
     const count = await labels.count();
     let wordDisplay = "";
+
     for (let i = 0; i < count; i++) {
-      const textContent = await labels.nth(i).textContent();
-      wordDisplay += textContent === "" ? "_" : textContent?.toUpperCase();
+      const raw = await labels.nth(i).textContent();
+      const content = raw?.trim().toUpperCase();
+      wordDisplay += content === "" || !content ? "_" : content;
     }
+
     return wordDisplay;
   }
 

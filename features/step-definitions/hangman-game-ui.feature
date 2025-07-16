@@ -8,11 +8,11 @@ Scenario Outline: Lets win
     Then the message should be "<answer>"
 
     Examples:
-    | word | letters  | answer |
-    | auto | AUTO     | WON    |
-    | pila | PILA     | WON    |
-    | lote | LOTE     | WON    |
-    | cero | CERO     | WON    |
+    | word | letters  | answer           |
+    | auto | AUTO     | 🎉 ¡GANASTE! 🎉 |
+    | pila | PILA     | 🎉 ¡GANASTE! 🎉 |
+    | lote | LOTE     | 🎉 ¡GANASTE! 🎉 |
+    | cero | CERO     | 🎉 ¡GANASTE! 🎉 |
 
 
 @losing
@@ -22,11 +22,11 @@ Scenario Outline: Lets lose
     Then the message should be "<answer>"
 
   Examples:
-    | word | letters   | answer |
-    | auto | ZPWKLMN   | LOST   |
-    | pila | WRYTFOQ   | LOST   |
-    | lote | AUIFJWÑ   | LOST   |
-    | cero | AIUSPLJ   | LOST   |
+    | word | letters   | answer            |
+    | auto | ZPWKLMN   | 💀 ¡PERDISTE! 💀 |
+    | pila | WRYTFOQ   | 💀 ¡PERDISTE! 💀 |
+    | lote | AUIFJWÑ   | 💀 ¡PERDISTE! 💀 |
+    | cero | AIUSPLJ   | 💀 ¡PERDISTE! 💀 |
 
 
 @winning
@@ -36,11 +36,11 @@ Scenario Outline: Win is not so easy
     Then the message should be "<answer>"
 
   Examples:
-    | word     | letters        | answer |
-    | planeta  | PAZXYNLTE      | WON    |
-    | carrito  | CIOUVWKRTA     | WON    |
-    | escuela  | SEZUXLBCHA     | WON    |
-    | relojero | RQWLOZJE       | WON    |
+    | word     | letters        | answer           |
+    | planeta  | PAZXYNLTE      | 🎉 ¡GANASTE! 🎉 |
+    | carrito  | CIOUVWKRTA     | 🎉 ¡GANASTE! 🎉 |
+    | escuela  | SEZUXLBCHA     | 🎉 ¡GANASTE! 🎉 |
+    | relojero | RQWLOZJE       | 🎉 ¡GANASTE! 🎉 |
 
 
 @losing
@@ -50,9 +50,9 @@ Scenario Outline: Try, fail, try again... lose
     Then the message should be "<answer>"
 
   Examples:
-    | word     | letters         | answer |
-    | camino   | CAMXYZULET      | LOST   |
-    | naranja  | NARZXYWBTS      | LOST   |
-    | pelota   | PEXYLOZKQWÑ     | LOST   |
-    | guitarra | GITZXRMQUKWF    | LOST   |
+    | word     | letters         | answer            |
+    | camino   | CAMXYZULET      | 💀 ¡PERDISTE! 💀 |
+    | naranja  | NARZXYWBTS      | 💀 ¡PERDISTE! 💀 |
+    | pelota   | PEXYLOZKQWÑ     | 💀 ¡PERDISTE! 💀 |
+    | guitarra | GITZXRMQUKWF    | 💀 ¡PERDISTE! 💀 |
 

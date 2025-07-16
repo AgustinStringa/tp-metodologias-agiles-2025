@@ -1,14 +1,43 @@
 .word-display {
-  font-size: 2rem;
-  letter-spacing: 1rem;
   display: flex;
   justify-content: center;
-  gap: 0.5rem;
-  margin: 1rem 0;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+  padding: 0;
 }
 
 .letter {
-  border-bottom: 2px solid black;
-  width: 1rem;
+  width: 2.5rem;
+  height: 3rem;
+  font-size: 2rem;
   text-align: center;
+  line-height: 3rem;
+  border-bottom: 2px solid #333;
+  background-color: #f9f9f9;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: transparent;
+  transition: all 0.3s ease-in-out;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.letter.revealed {
+  color: #222;
+  animation: pop-in 0.3s ease-out;
+  background-color: #e6ffe6;
+  border-color: #2ecc71;
+}
+
+@keyframes pop-in {
+  from {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
