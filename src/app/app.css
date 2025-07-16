@@ -19,6 +19,7 @@
 }
 
 .overlay-game-over {
+  flex-direction: column;
   background-color: rgba(255, 0, 0, 0.1);
 }
 
@@ -40,6 +41,10 @@
 
 .overlay-text-won {
   color: #006400;
+}
+
+#p-solution {
+  font-size: 1.5rem;
 }
 
 @keyframes fadeInOverlay {

@@ -71,4 +71,8 @@ export class Actor {
   async stop() {
     await this.browser?.close();
   }
+
+  async getSolution(): Promise<string> {
+    return (await this.page.textContent("#solution"))?.trim() || "";
+  }
 }

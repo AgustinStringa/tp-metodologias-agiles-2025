@@ -75,3 +75,12 @@ Then("I should see {string} parts of hangman", async function (count: string) {
   const actualBodyCount = await this["actor"].countHangmanParts();
   assert.strictEqual(actualBodyCount, countNumber);
 });
+
+// get-solution
+Then(
+  "I should lose the game and see the solution {string}",
+  async function (solution: string) {
+    const actual = await this["actor"].getSolution();
+    assert.strictEqual(actual, solution);
+  }
+);
