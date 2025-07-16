@@ -15,7 +15,7 @@ export class Hangman {
 
   constructor() {
     this.rawWord = Dictionary.getRandomWord().solution;
-    this.word = this.normalize(this.rawWord.toLowerCase());
+    this.word = this.normalize(this.rawWord.toUpperCase());
   }
 
   substractLive() {
@@ -54,8 +54,8 @@ export class Hangman {
       throw new Error("El juego fue finalizado.");
     }
 
-    letter = letter.toLowerCase();
-    if (!/^[a-zñ]$/.test(letter)) {
+    letter = letter.toUpperCase();
+    if (!/^[A-ZÑ]$/.test(letter)) {
       throw new Error("El caracter proporcionado no es válido.");
     }
 

@@ -35,7 +35,7 @@ export class Actor {
 
     for (let i = 0; i < count; i++) {
       const raw = await labels.nth(i).textContent();
-      const content = raw?.trim().toUpperCase();
+      const content = raw?.trim();
       wordDisplay += content === "" || !content ? "_" : content;
     }
 

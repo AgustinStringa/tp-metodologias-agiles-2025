@@ -15,9 +15,9 @@
 ></app-keyboard>
 } @else if (hangman.getGameStatus() === "LOST") {
 <div class="overlay-game-over">
-  <p id="game-status" class="overlay-text">💀 ¡PERDISTE! 💀</p>
+  <p id="game-status" class="overlay-text-lost">💀 ¡PERDISTE! 💀</p>
   <p id="p-solution">
-    LA PALABRA ERA <b id="solution">{{hangman.getAnswer().toUpperCase()}}</b>
+    LA PALABRA ERA <b id="solution">{{hangman.getAnswer()}}</b>
   </p>
 </div>
 } @else {

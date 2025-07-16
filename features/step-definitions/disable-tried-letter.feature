@@ -8,7 +8,7 @@ Scenario Outline: Disable a letter button after it's pressed
 
     Examples:
     | word      | letters |
-    | aburrido  | A       |
-    | guitarra  | G       |
-    | felicidad | F       |
-    | tranquilo | T       | 
+    | ABURRIDO  | A       |
+    | GUITARRA  | G       |
+    | FELICIDAD | F       |
+    | TRANQUILO | T       | 

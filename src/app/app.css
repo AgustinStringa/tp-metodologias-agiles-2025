@@ -10,7 +10,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(5px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,7 +27,7 @@
   background-color: rgba(0, 255, 0, 0.08);
 }
 
-.overlay-text,
+.overlay-text-lost,
 .overlay-text-won {
   font-size: 4rem;
   font-weight: bold;
@@ -35,7 +35,20 @@
   animation: popIn 0.5s ease-out;
 }
 
-.overlay-text {
+@media (width < 600px) {
+  .overlay-text-lost,
+  .overlay-text-won {
+    font-size: 3rem;
+  }
+}
+@media (width < 430px) {
+  .overlay-text-lost,
+  .overlay-text-won {
+    font-size: 2rem;
+  }
+}
+
+.overlay-text-lost {
   color: #b00000;
 }
 

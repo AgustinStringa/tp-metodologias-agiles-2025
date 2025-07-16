@@ -9,10 +9,10 @@ Scenario Outline: Lets win
 
     Examples:
     | word | letters  | answer           |
-    | auto | AUTO     | 🎉 ¡GANASTE! 🎉 |
-    | pila | PILA     | 🎉 ¡GANASTE! 🎉 |
-    | lote | LOTE     | 🎉 ¡GANASTE! 🎉 |
-    | cero | CERO     | 🎉 ¡GANASTE! 🎉 |
+    | AUTO | AUTO     | 🎉 ¡GANASTE! 🎉 |
+    | PILA | PILA     | 🎉 ¡GANASTE! 🎉 |
+    | LOTE | LOTE     | 🎉 ¡GANASTE! 🎉 |
+    | CERO | CERO     | 🎉 ¡GANASTE! 🎉 |
 
 
 @losing
@@ -23,10 +23,10 @@ Scenario Outline: Lets lose
 
   Examples:
     | word | letters   | answer            |
-    | auto | ZPWKLMN   | 💀 ¡PERDISTE! 💀 |
-    | pila | WRYTFOQ   | 💀 ¡PERDISTE! 💀 |
-    | lote | AUIFJWÑ   | 💀 ¡PERDISTE! 💀 |
-    | cero | AIUSPLJ   | 💀 ¡PERDISTE! 💀 |
+    | AUTO | ZPWKLMN   | 💀 ¡PERDISTE! 💀 |
+    | PILA | WRYTFOQ   | 💀 ¡PERDISTE! 💀 |
+    | LOTE | AUIFJWÑ   | 💀 ¡PERDISTE! 💀 |
+    | CERO | AIUSPLJ   | 💀 ¡PERDISTE! 💀 |
 
 
 @winning
@@ -37,10 +37,10 @@ Scenario Outline: Win is not so easy
 
   Examples:
     | word     | letters        | answer           |
-    | planeta  | PAZXYNLTE      | 🎉 ¡GANASTE! 🎉 |
-    | carrito  | CIOUVWKRTA     | 🎉 ¡GANASTE! 🎉 |
-    | escuela  | SEZUXLBCHA     | 🎉 ¡GANASTE! 🎉 |
-    | relojero | RQWLOZJE       | 🎉 ¡GANASTE! 🎉 |
+    | PLANETA  | PAZXYNLTE      | 🎉 ¡GANASTE! 🎉 |
+    | CARRITO  | CIOUVWKRTA     | 🎉 ¡GANASTE! 🎉 |
+    | ESCUELA  | SEZUXLBCHA     | 🎉 ¡GANASTE! 🎉 |
+    | RELOJERO | RQWLOZJE       | 🎉 ¡GANASTE! 🎉 |
 
 
 @losing
@@ -51,8 +51,8 @@ Scenario Outline: Try, fail, try again... lose
 
   Examples:
     | word     | letters         | answer            |
-    | camino   | CAMXYZULET      | 💀 ¡PERDISTE! 💀 |
-    | naranja  | NARZXYWBTS      | 💀 ¡PERDISTE! 💀 |
-    | pelota   | PEXYLOZKQWÑ     | 💀 ¡PERDISTE! 💀 |
-    | guitarra | GITZXRMQUKWF    | 💀 ¡PERDISTE! 💀 |
+    | CAMINO   | CAMXYZULET      | 💀 ¡PERDISTE! 💀 |
+    | NARANJA  | NARZXYWBTS      | 💀 ¡PERDISTE! 💀 |
+    | PELOTA   | PEXYLOZKQWÑ     | 💀 ¡PERDISTE! 💀 |
+    | GUITARRA | GITZXRMQUKWF    | 💀 ¡PERDISTE! 💀 |
 

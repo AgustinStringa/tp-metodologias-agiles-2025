@@ -10,10 +10,10 @@ Scenario Outline: Lets win
 
   Examples:
     | word | letters  | answer |
-    | auto | AUTO     | WON    |
-    | pila | PILA     | WON    |
-    | lote | LOTE     | WON    |
-    | cero | CERO     | WON    |
+    | AUTO | AUTO     | WON    |
+    | PILA | PILA     | WON    |
+    | LOTE | LOTE     | WON    |
+    | CERO | CERO     | WON    |
 
 
 @losing
@@ -24,10 +24,10 @@ Scenario Outline: Lets lose
 
   Examples:
     | word | letters   | answer |
-    | auto | ZPWKLMN   | LOST   |
-    | pila | WRYTFOQ   | LOST   |
-    | lote | AUIFJWÑ   | LOST   |
-    | cero | AIUSPLJ   | LOST   |
+    | AUTO | ZPWKLMN   | LOST   |
+    | PILA | WRYTFOQ   | LOST   |
+    | LOTE | AUIFJWÑ   | LOST   |
+    | CERO | AIUSPLJ   | LOST   |
 
 
 @winning
@@ -38,10 +38,10 @@ Scenario Outline: Win is not so easy
 
   Examples:
     | word     | letters        | answer |
-    | planeta  | PAZXYNLTE      | WON    |
-    | carrito  | CIOUVWKRTA     | WON    |
-    | escuela  | SEZUXLBCHA     | WON    |
-    | relojero | RQWLOZJE       | WON    |
+    | PLANETA  | PAZXYNLTE      | WON    |
+    | CARRITO  | CIOUVWKRTA     | WON    |
+    | ESCUELA  | SEZUXLBCHA     | WON    |
+    | RELOJERO | RQWLOZJE       | WON    |
 
 
 @losing
@@ -52,7 +52,7 @@ Scenario Outline: Try, fail, try again... lose
 
   Examples:
     | word     | letters         | answer |
-    | camino   | CAMXYZULET      | LOST   |
-    | naranja  | NARZXYWBTS      | LOST   |
-    | pelota   | PEXYLOZKQWÑ     | LOST   |
-    | guitarra | GITZXRMQUKWF    | LOST   |
+    | CAMINO   | CAMXYZULET      | LOST   |
+    | NARANJA  | NARZXYWBTS      | LOST   |
+    | PELOTA   | PEXYLOZKQWÑ     | LOST   |
+    | GUITARRA | GITZXRMQUKWF    | LOST   |

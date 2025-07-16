@@ -51,7 +51,7 @@ Then("word display should look like {string}", async function (expectedAnswer) {
       const spans = document.querySelectorAll(".word-display span");
       let result = "";
       spans.forEach((span) => {
-        const content = span.textContent?.trim().toUpperCase();
+        const content = span.textContent?.trim();
         result += content === "" ? "_" : content;
       });
       return result;
