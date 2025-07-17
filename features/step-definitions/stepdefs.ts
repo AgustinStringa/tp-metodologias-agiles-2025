@@ -135,3 +135,48 @@ Then(
     );
   }
 );
+
+//language-selection
+
+When("I choose language {string}", async function (language) {
+  await this["actor"].page.selectOption("#idioma", language);
+});
+
+Then(
+  "the game should use words in {string}",
+  async function (expectedLanguage) {
+    await this["actor"].page.waitForFunction(
+      (expected: string) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        return (window as any).CURRENT_SETTINGS?.language === expected;
+      },
+      expectedLanguage,
+      { timeout: 3000 }
+    );
+
+    const settings = await this["actor"].getCurrentSettings();
+    const actualWord = await this["actor"].getCurrentWord();
+
+    assert.strictEqual(
+      settings.language,
+      expectedLanguage,
+      `Expected language "${expectedLanguage}", but got "${settings.language}"`
+    );
+
+    const wordsData = await import(
+      `../../src/core/resources/${settings.language}-${settings.difficulty}-words.json`
+    );
+
+    const validWords = wordsData.default.map((entry: { solution: string }) =>
+      entry.solution
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toUpperCase()
+    );
+
+    assert.ok(
+      validWords.includes(actualWord),
+      `Expected word "${actualWord}" to be in ${settings.language}-${settings.difficulty}-words.json`
+    );
+  }
+);
