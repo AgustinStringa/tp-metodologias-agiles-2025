@@ -4,8 +4,11 @@ import { expect } from "@playwright/test";
 import { Hangman } from "../../src/core/hangman";
 
 // hangman-game feature
-Given("word is {string}", function (word) {
-  this["hangman"] = new Hangman();
+Given("word is {string}", async function (word) {
+  this["hangman"] = await Hangman.create({
+    language: "spanish",
+    difficulty: "easy",
+  });
   this["hangman"]["word"] = word;
 });
 

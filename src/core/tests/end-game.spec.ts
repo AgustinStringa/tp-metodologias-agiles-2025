@@ -2,8 +2,8 @@ import { Hangman } from "../hangman";
 
 let hangman: Hangman;
 
-beforeEach(() => {
-  hangman = new Hangman();
+beforeEach(async () => {
+  hangman = await Hangman.create({ language: "spanish", difficulty: "easy" });
 });
 
 describe("Transiciones del estado del juego", () => {

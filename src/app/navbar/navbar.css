@@ -1,0 +1,44 @@
+.navbar {
+  top: 0;
+  background-color: #333;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+#settings-btn {
+  background-color: #444;
+  border: none;
+  border-radius: 50%;
+  height: fit-content;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#settings-btn:hover {
+  background-color: #555;
+  transform: rotate(10deg);
+}
+
+.icon-gear {
+  fill: white;
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+#settings-btn:active .icon-gear {
+  transform: rotate(180deg);
+}

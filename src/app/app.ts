@@ -1,38 +1,29 @@
-import { Component } from "@angular/core";
+import { Component, inject, OnInit } from "@angular/core";
 import { GameService } from "../core/services/game.service";
-import { Hangman } from "../core/hangman";
 import { HangmanDrawingComponent } from "./hangman-drawing/hangman-drawing";
 import { KeyboardComponent } from "./keyboard/keyboard";
-import { RouterOutlet } from "@angular/router";
+import { Navbar } from "./navbar/navbar";
 import { WordDisplayComponent } from "./word-display/word-display";
 
 @Component({
   selector: "app-root",
   imports: [
-    RouterOutlet,
     HangmanDrawingComponent,
     KeyboardComponent,
     WordDisplayComponent,
+    Navbar,
   ],
   templateUrl: "./app.html",
   styleUrls: ["./app.css"],
 })
-export class App {
+export class App implements OnInit {
   protected title = "tp-metodologias-agiles-2025";
-  errorsCount = 0;
-  hangman: Hangman;
-  triedLetters: string[] = [];
-  rightLetters: string[] = [];
+  readonly gameService = inject(GameService);
 
-  // eslint-disable-next-line @angular-eslint/prefer-inject
-  constructor(private readonly gameService: GameService) {
-    this.hangman = this.gameService.createHangman();
-  }
+  gameReady = false;
 
-  onKey(letter: string) {
-    const result = this.hangman.tryLetter(letter);
-    if (!result) this.errorsCount++;
-    this.rightLetters = this.hangman.getRightLetters();
-    this.triedLetters = this.hangman.getTriedLetters();
+  async ngOnInit() {
+    await this.gameService.createHangman();
+    this.gameReady = true;
   }
 }

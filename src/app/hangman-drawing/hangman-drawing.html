@@ -11,7 +11,7 @@
   <!-- Cuerda -->
   <line x1="120" y1="20" x2="120" y2="50" stroke="black" stroke-width="4" />
 
-  @if (fails > 0) {
+  @if (errorsCount > 0) {
   <!-- Cabeza -->
   <circle
     cx="120"
@@ -23,7 +23,7 @@
     id="hangman_head"
   />
 
-  } @if (fails > 1) {
+  } @if (errorsCount > 1) {
   <!-- Cuerpo -->
   <line
     x1="120"
@@ -35,7 +35,7 @@
     id="hangman_chest"
   />
 
-  } @if (fails > 2) {
+  } @if (errorsCount > 2) {
   <!-- Brazo izquierdo -->
   <line
     x1="120"
@@ -47,7 +47,7 @@
     id="hangman_leftarm"
   />
 
-  } @if (fails > 3) {
+  } @if (errorsCount > 3) {
   <!-- Brazo derecho -->
   <line
     x1="120"
@@ -59,7 +59,7 @@
     id="hangman_rightarm"
   />
 
-  } @if (fails > 4) {
+  } @if (errorsCount > 4) {
   <!-- Pierna izquierda -->
   <line
     x1="120"
@@ -71,7 +71,7 @@
     id="hangman_leftleg"
   />
 
-  } @if (fails > 5) {
+  } @if (errorsCount > 5) {
   <!-- Pierna derecha -->
   <line
     x1="120"
@@ -83,8 +83,7 @@
     id="hangman_rightleg"
   />
 
-  } @if (fails > 6) {
-  <!--TODO tachar o poner sangre-->
+  } @if (errorsCount > 6) {
   <line
     x1="110"
     y1="60"

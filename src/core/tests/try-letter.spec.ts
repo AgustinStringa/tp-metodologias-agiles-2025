@@ -1,8 +1,9 @@
 import { Hangman } from "../hangman";
 
 let hangman: Hangman;
-beforeEach(() => {
-  hangman = new Hangman();
+
+beforeEach(async () => {
+  hangman = await Hangman.create({ language: "spanish", difficulty: "easy" });
 });
 
 test("funcion tryLetter() debe estar definida", () => {
@@ -71,8 +72,8 @@ describe("al intentar una letra, dependiendo si estÃ¡ o no en la palabra, deberÃ
   const wrongLetter = "j";
   const rightLetter = "p";
 
-  beforeEach(() => {
-    hangman = new Hangman();
+  beforeEach(async () => {
+    hangman = await Hangman.create({ language: "spanish", difficulty: "easy" });
     hangman.word = "PERRO";
     initialLives = hangman.lives;
   });
@@ -93,7 +94,6 @@ describe("al intentar una letra, dependiendo si estÃ¡ o no en la palabra, deberÃ
 });
 
 test("si la cantidad de vidas resulta igual a 0, no se puede intentar una letra", () => {
-  hangman = new Hangman();
   hangman.word = "CACHORRO";
   hangman.lives = 0;
 

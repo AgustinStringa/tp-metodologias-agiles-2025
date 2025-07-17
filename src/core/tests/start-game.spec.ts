@@ -1,7 +1,7 @@
 import { Hangman } from "../hangman";
 let hangman: Hangman;
-beforeEach(() => {
-  hangman = new Hangman();
+beforeEach(async () => {
+  hangman = await Hangman.create({ language: "spanish", difficulty: "easy" });
 });
 
 test("Al iniciar el juego tiene que haber una palabra a la cual adivinar", () => {
@@ -24,9 +24,9 @@ test("La cantidad de letras de la palabra a adivinar no debe ser un número nega
   expect(hangman.getLettersCount()).not.toBeLessThan(0);
 });
 
-test("Si inicio un juego y luego inicio otro juego, las palabras a adivinar deben ser distintas", () => {
+test("Si inicio un juego y luego inicio otro juego, las palabras a adivinar deben ser distintas", async () => {
   const word1 = hangman.word;
-  hangman = new Hangman();
+  hangman = await Hangman.create({ language: "spanish", difficulty: "easy" });
   const word2 = hangman.word;
   expect(word1).not.toBe(word2);
 });
