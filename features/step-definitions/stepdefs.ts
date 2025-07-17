@@ -115,7 +115,23 @@ Then(
       { timeout: 3000 }
     );
 
-    const actualDifficulty = await this["actor"].getCurrentDifficulty();
-    assert.strictEqual(actualDifficulty, expectedDifficulty);
+    const settings = await this["actor"].getCurrentSettings();
+    const actualWord = await this["actor"].getCurrentWord();
+
+    const wordsData = await import(
+      `../../src/core/resources/${settings.language}-${settings.difficulty}-words.json`
+    );
+
+    const validWords = wordsData.default.map((entry: { solution: string }) =>
+      entry.solution
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toUpperCase()
+    );
+
+    assert.ok(
+      validWords.includes(actualWord),
+      `Expected word "${actualWord}" to be in ${settings.language}-${settings.difficulty}-words.json`
+    );
   }
 );
