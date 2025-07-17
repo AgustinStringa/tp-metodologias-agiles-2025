@@ -11,31 +11,87 @@
   <!-- Cuerda -->
   <line x1="120" y1="20" x2="120" y2="50" stroke="black" stroke-width="4" />
 
-  @if (fails > 0) {
+  @if (errorsCount > 0) {
   <!-- Cabeza -->
-  <circle cx="120" cy="70" r="20" stroke="black" stroke-width="3" fill="none" />
+  <circle
+    cx="120"
+    cy="70"
+    r="20"
+    stroke="black"
+    stroke-width="3"
+    fill="none"
+    id="hangman_head"
+  />
 
-  } @if (fails > 1) {
+  } @if (errorsCount > 1) {
   <!-- Cuerpo -->
-  <line x1="120" y1="90" x2="120" y2="150" stroke="black" stroke-width="3" />
+  <line
+    x1="120"
+    y1="90"
+    x2="120"
+    y2="150"
+    stroke="black"
+    stroke-width="3"
+    id="hangman_chest"
+  />
 
-  } @if (fails > 2) {
+  } @if (errorsCount > 2) {
   <!-- Brazo izquierdo -->
-  <line x1="120" y1="100" x2="90" y2="130" stroke="black" stroke-width="3" />
+  <line
+    x1="120"
+    y1="100"
+    x2="90"
+    y2="130"
+    stroke="black"
+    stroke-width="3"
+    id="hangman_leftarm"
+  />
 
-  } @if (fails > 3) {
+  } @if (errorsCount > 3) {
   <!-- Brazo derecho -->
-  <line x1="120" y1="100" x2="150" y2="130" stroke="black" stroke-width="3" />
+  <line
+    x1="120"
+    y1="100"
+    x2="150"
+    y2="130"
+    stroke="black"
+    stroke-width="3"
+    id="hangman_rightarm"
+  />
 
-  } @if (fails > 4) {
+  } @if (errorsCount > 4) {
   <!-- Pierna izquierda -->
-  <line x1="120" y1="150" x2="90" y2="190" stroke="black" stroke-width="3" />
+  <line
+    x1="120"
+    y1="150"
+    x2="90"
+    y2="190"
+    stroke="black"
+    stroke-width="3"
+    id="hangman_leftleg"
+  />
 
-  } @if (fails > 5) {
+  } @if (errorsCount > 5) {
   <!-- Pierna derecha -->
-  <line x1="120" y1="150" x2="150" y2="190" stroke="black" stroke-width="3" />
+  <line
+    x1="120"
+    y1="150"
+    x2="150"
+    y2="190"
+    stroke="black"
+    stroke-width="3"
+    id="hangman_rightleg"
+  />
 
-  } @if (fails > 6) {
-  <!--TODO tachar o poner sangre-->
+  } @if (errorsCount > 6) {
+  <line
+    x1="110"
+    y1="60"
+    x2="130"
+    y2="80"
+    stroke="red"
+    stroke-width="3"
+    id="hangman_killmark"
+  />
   }
 </svg>

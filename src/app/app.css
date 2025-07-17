@@ -1,0 +1,81 @@
+.game-status {
+  text-align: center;
+  font-size: 40px;
+}
+
+.overlay-game-over,
+.overlay-game-won {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  animation: fadeInOverlay 0.6s ease-in-out;
+}
+
+.overlay-game-over {
+  flex-direction: column;
+  background-color: rgba(255, 0, 0, 0.1);
+}
+
+.overlay-game-won {
+  background-color: rgba(0, 255, 0, 0.08);
+}
+
+.overlay-text-lost,
+.overlay-text-won {
+  font-size: 4rem;
+  font-weight: bold;
+  text-align: center;
+  animation: popIn 0.5s ease-out;
+}
+
+@media (width < 600px) {
+  .overlay-text-lost,
+  .overlay-text-won {
+    font-size: 3rem;
+  }
+}
+@media (width < 430px) {
+  .overlay-text-lost,
+  .overlay-text-won {
+    font-size: 2rem;
+  }
+}
+
+.overlay-text-lost {
+  color: #b00000;
+}
+
+.overlay-text-won {
+  color: #006400;
+}
+
+#p-solution {
+  font-size: 1.5rem;
+}
+
+@keyframes fadeInOverlay {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

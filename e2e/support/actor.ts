@@ -32,14 +32,47 @@ export class Actor {
     const labels = this.page.locator(".word-display span");
     const count = await labels.count();
     let wordDisplay = "";
+
     for (let i = 0; i < count; i++) {
-      const textContent = await labels.nth(i).textContent();
-      wordDisplay += textContent === "" ? "_" : textContent?.toUpperCase();
+      const raw = await labels.nth(i).textContent();
+      const content = raw?.trim();
+      wordDisplay += content === "" || !content ? "_" : content;
     }
+
     return wordDisplay;
+  }
+
+  async countHangmanParts(): Promise<number> {
+    const partIds = [
+      "hangman_head",
+      "hangman_chest",
+      "hangman_leftarm",
+      "hangman_rightarm",
+      "hangman_leftleg",
+      "hangman_rightleg",
+      "hangman_killmark",
+    ];
+
+    let count = 0;
+
+    await this.page.waitForSelector(".hangman-svg", { timeout: 3000 });
+
+    for (const id of partIds) {
+      const el = await this.page.$(`#${id}`);
+      if (el !== null) {
+        count++;
+      } else {
+        break;
+      }
+    }
+    return count;
   }
 
   async stop() {
     await this.browser?.close();
+  }
+
+  async getSolution(): Promise<string> {
+    return (await this.page.textContent("#solution"))?.trim() || "";
   }
 }

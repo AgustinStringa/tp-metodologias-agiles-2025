@@ -1,10 +1,14 @@
 import { Given, Then, When } from "@cucumber/cucumber";
 import assert from "assert";
+import { expect } from "@playwright/test";
 import { Hangman } from "../../src/core/hangman";
 
 // hangman-game feature
-Given("word is {string}", function (word) {
-  this["hangman"] = new Hangman();
+Given("word is {string}", async function (word) {
+  this["hangman"] = await Hangman.create({
+    language: "spanish",
+    difficulty: "easy",
+  });
   this["hangman"]["word"] = word;
 });
 
@@ -50,15 +54,36 @@ Then("word display should look like {string}", async function (expectedAnswer) {
       const spans = document.querySelectorAll(".word-display span");
       let result = "";
       spans.forEach((span) => {
-        const content = span.textContent?.trim().toUpperCase();
+        const content = span.textContent?.trim();
         result += content === "" ? "_" : content;
       });
       return result;
     },
-    { timeout: 7000 },
-    expectedAnswer
+    { timeout: 7000 }
   );
 
   const actual = await this["actor"].getWordDisplay();
   assert.strictEqual(actual, expectedAnswer);
 });
+
+// disable-tried-letter
+Then("the button for {string} should look disabled", async function (letter) {
+  const button = this["actor"].page.locator(`button#${letter}`);
+  await expect(button).toBeDisabled();
+});
+
+// drawing-hangman
+Then("I should see {string} parts of hangman", async function (count: string) {
+  const countNumber = Number.parseInt(count);
+  const actualBodyCount = await this["actor"].countHangmanParts();
+  assert.strictEqual(actualBodyCount, countNumber);
+});
+
+// get-solution
+Then(
+  "I should lose the game and see the solution {string}",
+  async function (solution: string) {
+    const actual = await this["actor"].getSolution();
+    assert.strictEqual(actual, solution);
+  }
+);

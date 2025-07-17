@@ -8,7 +8,7 @@ Scenario Outline: Displaying correct letters when pressing buttons
 
     Examples:
     | word | letters  | answer |
-    | auto | AT       | A_T_   |
-    | pila | L        | __L_   |
-    | lote | OTE      | _OTE   |
-    | cero |          | ____   |
+    | AUTO | AT       | A_T_   |
+    | PILA | L        | __L_   |
+    | LOTE | OTE      | _OTE   |
+    | CERO |          | ____   |

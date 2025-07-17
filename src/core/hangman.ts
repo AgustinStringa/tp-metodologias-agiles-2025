@@ -1,10 +1,6 @@
 import { Dictionary } from "./dictionary";
-
-enum GameStatus {
-  IN_PROGRESS = "IN PROGRESS",
-  WON = "WON",
-  LOST = "LOST",
-}
+import { GameSettings } from "./interfaces/game-settings.interface";
+import { GameStatus } from "./enums/game-status.enum";
 
 export class Hangman {
   word: string;
@@ -13,9 +9,15 @@ export class Hangman {
   triedLetters: string[] = [];
   rightLetters: string[] = [];
 
-  constructor() {
-    this.rawWord = Dictionary.getRandomWord().solution;
-    this.word = this.normalize(this.rawWord.toLowerCase());
+  private constructor(word: string) {
+    this.rawWord = word;
+    this.word = this.normalize(this.rawWord);
+  }
+  static async create(settings: GameSettings): Promise<Hangman> {
+    const word = (
+      await Dictionary.getRandomWord(settings.language, settings.difficulty)
+    ).solution;
+    return new Hangman(word!);
   }
 
   substractLive() {
@@ -42,7 +44,14 @@ export class Hangman {
   }
 
   normalize(text: string): string {
-    return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    return text
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/œ/g, "oe")
+      .replace(/æ/g, "ae")
+      .replace(/ç/g, "c")
+      .replace(/đ/g, "d")
+      .toUpperCase();
   }
 
   tryLetter(letter: string) {
@@ -54,8 +63,8 @@ export class Hangman {
       throw new Error("El juego fue finalizado.");
     }
 
-    letter = letter.toLowerCase();
-    if (!/^[a-zñ]$/.test(letter)) {
+    letter = letter.toUpperCase();
+    if (!/^[A-ZÑ]$/.test(letter)) {
       throw new Error("El caracter proporcionado no es válido.");
     }
 

@@ -2,13 +2,13 @@ import { Hangman } from "../hangman";
 
 let hangman: Hangman;
 
-beforeEach(() => {
-  hangman = new Hangman();
+beforeEach(async () => {
+  hangman = await Hangman.create({ language: "spanish", difficulty: "easy" });
 });
 
 describe("Transiciones del estado del juego", () => {
-  test('Si la palabra es "auto", intento A, U, T, O, el estado del juego debe ser "WON"', () => {
-    hangman.word = "auto";
+  test('Si la palabra es "AUTO", intento A, U, T, O, el estado del juego debe ser "WON"', () => {
+    hangman.word = "AUTO";
 
     hangman.tryLetter("A");
     hangman.tryLetter("U");
@@ -20,8 +20,8 @@ describe("Transiciones del estado del juego", () => {
     expect(gameStatus).toEqual(expectedGameStatus);
   });
 
-  test('Si la palabra es "auto", intento J, K, L, M, N, Z, H el estado del juego debe ser "LOST"', () => {
-    hangman.word = "auto";
+  test('Si la palabra es "AUTO", intento J, K, L, M, N, Z, H el estado del juego debe ser "LOST"', () => {
+    hangman.word = "AUTO";
     hangman.tryLetter("J");
     hangman.tryLetter("K");
     hangman.tryLetter("L");
@@ -35,8 +35,8 @@ describe("Transiciones del estado del juego", () => {
     expect(gameStatus).toEqual(expectedGameStatus);
   });
 
-  test('Si la palabra es "auto", intento T, A el estado del juego debe ser "IN PROGRESS"', () => {
-    hangman.word = "auto";
+  test('Si la palabra es "AUTO", intento T, A el estado del juego debe ser "IN PROGRESS"', () => {
+    hangman.word = "AUTO";
     hangman.tryLetter("T");
     hangman.tryLetter("A");
 
@@ -45,8 +45,8 @@ describe("Transiciones del estado del juego", () => {
     expect(gameStatus).toEqual(expectedGameStatus);
   });
 
-  test('Si la palabra es "carro", intento C, A, R, O, el estado del juego debe ser "WON"', () => {
-    hangman.word = "carro";
+  test('Si la palabra es "CARRO", intento C, A, R, O, el estado del juego debe ser "WON"', () => {
+    hangman.word = "CARRO";
 
     hangman.tryLetter("C");
     hangman.tryLetter("A");
@@ -59,9 +59,9 @@ describe("Transiciones del estado del juego", () => {
   });
 });
 
-test('Si la palabra es "pez", intento P, E, Z y luego A, tryLetter() debería lanzar un error.', () => {
+test('Si la palabra es "PEZ", intento P, E, Z y luego A, tryLetter() debería lanzar un error.', () => {
   expect(() => {
-    hangman.word = "pez";
+    hangman.word = "PEZ";
 
     hangman.tryLetter("P");
     hangman.tryLetter("E");
@@ -71,15 +71,15 @@ test('Si la palabra es "pez", intento P, E, Z y luego A, tryLetter() debería la
 });
 
 describe("Ver mensaje de derrota de juego", () => {
-  test('Si la palabra es "auto" y pierdo todas mis vidas, getAnswer() debería retornar "auto"', () => {
-    hangman.word = "auto";
+  test('Si la palabra es "AUTO" y pierdo todas mis vidas, getAnswer() debería retornar "AUTO"', () => {
+    hangman.word = "AUTO";
     hangman.lives = 0;
     const actualAnswer = hangman.getAnswer();
     expect(actualAnswer).toBe(hangman.word);
   });
 
-  test('Si la palabra es "colza" y pierdo todas mis vidas, getAnswer() debería retornar "colza"', () => {
-    hangman.word = "colza";
+  test('Si la palabra es "COLZA" y pierdo todas mis vidas, getAnswer() debería retornar "COLZA"', () => {
+    hangman.word = "COLZA";
     hangman.lives = 0;
     const actualAnswer = hangman.getAnswer();
     expect(actualAnswer).toBe(hangman.word);

@@ -1,8 +1,9 @@
 import { Hangman } from "../hangman";
 
 let hangman: Hangman;
-beforeEach(() => {
-  hangman = new Hangman();
+
+beforeEach(async () => {
+  hangman = await Hangman.create({ language: "spanish", difficulty: "easy" });
 });
 
 test("funcion tryLetter() debe estar definida", () => {
@@ -71,30 +72,29 @@ describe("al intentar una letra, dependiendo si está o no en la palabra, deber�
   const wrongLetter = "j";
   const rightLetter = "p";
 
-  beforeEach(() => {
-    hangman = new Hangman();
-    hangman.word = "perro";
+  beforeEach(async () => {
+    hangman = await Hangman.create({ language: "spanish", difficulty: "easy" });
+    hangman.word = "PERRO";
     initialLives = hangman.lives;
   });
 
-  test("si la palabra es perro e intento la letra j, debería devolver false", () => {
+  test("si la palabra es PERRO e intento la letra j, debería devolver false", () => {
     expect(hangman.tryLetter(wrongLetter)).toBe(false);
   });
 
-  test("si la palabra es perro, e intento la letra j, la cantidad de vidas debería verse disminuida en 1", () => {
+  test("si la palabra es PERRO, e intento la letra j, la cantidad de vidas debería verse disminuida en 1", () => {
     hangman.tryLetter(wrongLetter);
     expect(hangman.lives).toEqual(initialLives - 1);
   });
 
-  test("si la palabra es perro, e intento la letra p, la cantidad de vidas debería mantenerse igual", () => {
+  test("si la palabra es PERRO, e intento la letra p, la cantidad de vidas debería mantenerse igual", () => {
     hangman.tryLetter(rightLetter);
     expect(hangman.lives).toEqual(initialLives);
   });
 });
 
 test("si la cantidad de vidas resulta igual a 0, no se puede intentar una letra", () => {
-  hangman = new Hangman();
-  hangman.word = "cachorro";
+  hangman.word = "CACHORRO";
   hangman.lives = 0;
 
   expect(() => {
@@ -103,19 +103,19 @@ test("si la cantidad de vidas resulta igual a 0, no se puede intentar una letra"
 });
 
 describe("La cantidad de letras debe mantenerse igual con el correr de los intentos (es decir pérdida de vidas)", () => {
-  test("si la palabra es 'auto' e intento 'B' la cantidad de letras debe ser 4.", () => {
-    hangman.word = "auto";
+  test("si la palabra es 'AUTO' e intento 'B' la cantidad de letras debe ser 4.", () => {
+    hangman.word = "AUTO";
     hangman.tryLetter("B");
     expect(hangman.getLettersCount()).toBe(4);
   });
   test("si la palabra es 'ave' la cantidad de letras debe ser 3", () => {
-    hangman.word = "ave";
+    hangman.word = "AVE";
     expect(hangman.getLettersCount()).toBe(3);
   });
 });
 
 test("al recibir una letra con tilde (ej: 'a), tryLetter() debería comportarse como si fuera sin tilde (ej: 'a'", () => {
-  hangman.rawWord = "camión";
+  hangman.rawWord = "CAMIÓN";
   hangman.word = hangman.normalize(hangman.rawWord);
   expect(hangman.tryLetter("o")).toBe(true);
 });

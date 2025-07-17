@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { Component, inject, OnInit } from "@angular/core";
+import { GameService } from "../../core/services/game.service";
 import { NgClass } from "@angular/common";
 
 @Component({
@@ -7,19 +8,36 @@ import { NgClass } from "@angular/common";
   styleUrls: ["./keyboard.css"],
   imports: [NgClass],
 })
-export class KeyboardComponent {
+export class KeyboardComponent implements OnInit {
+  readonly gameService = inject(GameService);
+  triedLetters: string[] = [];
+  rightLetters: string[] = [];
+
   keyRows: string[][] = [
     ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
     ["A", "S", "D", "F", "G", "H", "J", "K", "L", "Ñ"],
     ["Z", "X", "C", "V", "B", "N", "M"],
   ];
 
-  @Input({ required: true }) triedLetters!: string[];
-  @Input({ required: true }) rightLetters!: string[];
-  @Output() keyPressed = new EventEmitter<string>();
+  ngOnInit() {
+    this.gameService.getTriedLettersObservable().subscribe((letters) => {
+      this.triedLetters = letters;
+    });
+
+    this.gameService.getRightLettersObservable().subscribe((letters) => {
+      this.rightLetters = letters;
+    });
+  }
 
   pressKey(key: string) {
-    this.keyPressed.emit(key);
+    if (!this.gameService.hangman) return;
+
+    const result = this.gameService.hangman.tryLetter(key);
+    if (!result) {
+      this.gameService.addOneError()
+    }
+    this.rightLetters = this.gameService.hangman.getRightLetters();
+    this.triedLetters = this.gameService.hangman.getTriedLetters();
   }
 
   isRight(key: string): boolean {

@@ -5,10 +5,10 @@
     <button
       (click)="pressKey(key)"
       id="{{key}}"
-      [disabled]="isTried(key.toLowerCase())"
+      [disabled]="isTried(key)"
       [ngClass]="{
-            'right': isRight(key.toLowerCase()),
-            'wrong': isWrong(key.toLowerCase())
+            'right': isRight(key),
+            'wrong': isWrong(key)
           }"
     >
       {{ key }}
