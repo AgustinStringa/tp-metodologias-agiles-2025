@@ -68,6 +68,12 @@ export class Actor {
     return count;
   }
 
+  async getCurrentDifficulty(): Promise<string> {
+    return await this.page.evaluate(() => {
+      return (window as any).CURRENT_SETTINGS?.difficulty;
+    });
+  }
+
   async stop() {
     await this.browser?.close();
   }

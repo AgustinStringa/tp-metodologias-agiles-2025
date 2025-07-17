@@ -87,3 +87,35 @@ Then(
     assert.strictEqual(actual, solution);
   }
 );
+
+// get-current-difficulty
+
+Given("I open the settings dialog", async function () {
+  await this["actor"].launchAppWithWord("");
+  await this["actor"].page.click("#settings-btn");
+});
+
+When("I choose difficulty {string}", async function (difficulty) {
+  await this["actor"].page.selectOption("#dificultad", difficulty);
+});
+
+When("I press save settings", async function () {
+  await this["actor"].page.click("button.btn-primary");
+});
+
+Then(
+  "the game should use a word of {string} difficulty",
+  async function (expectedDifficulty) {
+    await this["actor"].page.waitForFunction(
+      (expected: string) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        return (window as any).CURRENT_SETTINGS?.difficulty === expected;
+      },
+      expectedDifficulty,
+      { timeout: 3000 }
+    );
+
+    const actualDifficulty = await this["actor"].getCurrentDifficulty();
+    assert.strictEqual(actualDifficulty, expectedDifficulty);
+  }
+);
