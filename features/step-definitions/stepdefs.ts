@@ -180,3 +180,16 @@ Then(
     );
   }
 );
+
+// restart-game
+When("I press the retry button", async function () {
+  await this["actor"].page.click("#retry-btn");
+});
+
+Then(
+  "the button for {string} should not look disabled",
+  async function (letter) {
+    const button = this["actor"].page.locator(`button#${letter}`);
+    await expect(button).toBeEnabled();
+  }
+);

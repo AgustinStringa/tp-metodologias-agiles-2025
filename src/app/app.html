@@ -14,9 +14,12 @@
   <p id="p-solution">
     LA PALABRA ERA <b id="solution">{{gameService.hangman!.getAnswer()}}</b>
   </p>
+  <button id="retry-btn" (click)="restartGame()">🔁 Volver a Jugar</button>
 </div>
+
 } @else {
 <div class="overlay-game-won">
   <p id="game-status" class="overlay-text-won">🎉 ¡GANASTE! 🎉</p>
+  <button id="retry-btn" (click)="restartGame()">🔁 Volver a Jugar</button>
 </div>
 } }
