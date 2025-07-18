@@ -73,6 +73,7 @@ test('Si la palabra es "PEZ", intento P, E, Z y luego A, tryLetter() debería la
 describe("Ver mensaje de derrota de juego", () => {
   test('Si la palabra es "AUTO" y pierdo todas mis vidas, getAnswer() debería retornar "AUTO"', () => {
     hangman.word = "AUTO";
+    hangman.rawWord = "AUTO";
     hangman.lives = 0;
     const actualAnswer = hangman.getAnswer();
     expect(actualAnswer).toBe(hangman.word);
@@ -80,6 +81,7 @@ describe("Ver mensaje de derrota de juego", () => {
 
   test('Si la palabra es "COLZA" y pierdo todas mis vidas, getAnswer() debería retornar "COLZA"', () => {
     hangman.word = "COLZA";
+    hangman.rawWord = "COLZA";
     hangman.lives = 0;
     const actualAnswer = hangman.getAnswer();
     expect(actualAnswer).toBe(hangman.word);
