@@ -117,3 +117,20 @@
   background-color: #b0e5b0;
   transform: scale(1.05);
 }
+
+.stats-text {
+  font-size: 1.2rem;
+  color: #333;
+  margin: 1rem 0;
+  text-align: center;
+  animation: popIn 0.4s ease-out;
+  font-weight: 500;
+}
+
+.overlay-game-over .stats-text {
+  color: #800;
+}
+
+.overlay-game-won .stats-text {
+  color: #064b00;
+}

@@ -193,3 +193,13 @@ Then(
     await expect(button).toBeEnabled();
   }
 );
+
+// hangman-statistics
+
+Then("I should see the stats {string}", async function (expectedStats: string) {
+  const statsText = await this["actor"].page.textContent(".stats-text");
+  assert.ok(
+    statsText?.includes(expectedStats),
+    `Expected stats "${expectedStats}" but got "${statsText}"`
+  );
+});
