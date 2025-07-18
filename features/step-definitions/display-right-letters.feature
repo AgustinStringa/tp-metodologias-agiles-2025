@@ -2,7 +2,7 @@ Feature: Displaying right letters!
 
 @right_letters
 Scenario Outline: Displaying correct letters when pressing buttons
-    Given word with UI is "<word>"
+    Given word is "<word>"
     When I press the buttons for "<letters>" 
     Then word display should look like "<answer>"
 

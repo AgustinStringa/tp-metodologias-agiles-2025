@@ -1,32 +1,9 @@
 import { Given, Then, When } from "@cucumber/cucumber";
 import assert from "assert";
 import { expect } from "@playwright/test";
-import { Hangman } from "../../src/core/hangman";
 
 // hangman-game feature
 Given("word is {string}", async function (word) {
-  this["hangman"] = await Hangman.create({
-    language: "spanish",
-    difficulty: "easy",
-  });
-  this["hangman"]["word"] = word;
-});
-
-When("I try {string}", function (lettersString: string) {
-  const letters = lettersString.split("");
-
-  letters.forEach((letter: string) => {
-    this["hangman"].tryLetter(letter);
-  });
-});
-
-Then("I should see {string}", function (expectedAnswer) {
-  this["actualAnswer"] = this["hangman"].getGameStatus();
-  assert.strictEqual(this["actualAnswer"], expectedAnswer);
-});
-
-// hangman-game-ui feature
-Given("word with UI is {string}", async function (word) {
   await this["actor"].launchAppWithWord(word);
 });
 
@@ -88,19 +65,18 @@ Then(
   }
 );
 
-// get-current-difficulty
-
+// difficulty-selection
 Given("I open the settings dialog", async function () {
   await this["actor"].launchAppWithWord("");
   await this["actor"].page.click("#settings-btn");
 });
 
 When("I choose difficulty {string}", async function (difficulty) {
-  await this["actor"].page.selectOption("#dificultad", difficulty);
+  await this["actor"].page.selectOption("#difficulty-select", difficulty);
 });
 
 When("I press save settings", async function () {
-  await this["actor"].page.click("button.btn-primary");
+  await this["actor"].page.click("#save-settings-btn");
 });
 
 Then(
@@ -137,9 +113,8 @@ Then(
 );
 
 //language-selection
-
 When("I choose language {string}", async function (language) {
-  await this["actor"].page.selectOption("#idioma", language);
+  await this["actor"].page.selectOption("#language-select", language);
 });
 
 Then(
@@ -181,9 +156,9 @@ Then(
   }
 );
 
-// restart-game
-When("I press the retry button", async function () {
-  await this["actor"].page.click("#retry-btn");
+// play-again
+When("I press the play again button", async function () {
+  await this["actor"].page.click("#play-again-btn");
 });
 
 Then(
@@ -195,7 +170,6 @@ Then(
 );
 
 // hangman-statistics
-
 Then("I should see the stats {string}", async function (expectedStats: string) {
   const statsText = await this["actor"].page.textContent(".stats-text");
   assert.ok(

@@ -19,7 +19,7 @@
     {{gameService.hangman!.getWrongLetters().length}} | 🎯 Intentos:
     {{gameService.hangman!.getTriedLetters().length}}
   </p>
-  <button id="retry-btn" (click)="restartGame()">🔁 Volver a Jugar</button>
+  <button id="play-again-btn" (click)="restartGame()">🔁 Volver a Jugar</button>
 </div>
 
 } @else {
@@ -30,6 +30,6 @@
     {{gameService.hangman!.getWrongLetters().length}} | 🎯 Intentos:
     {{gameService.hangman!.getTriedLetters().length}}
   </p>
-  <button id="retry-btn" (click)="restartGame()">🔁 Volver a Jugar</button>
+  <button id="play-again-btn" (click)="restartGame()">🔁 Volver a Jugar</button>
 </div>
 } }

@@ -81,7 +81,7 @@
   }
 }
 
-#retry-btn {
+#play-again-btn {
   margin-top: 1.5rem;
   padding: 0.75rem 2rem;
   font-size: 1.2rem;
@@ -96,24 +96,24 @@
   gap: 0.5rem;
 }
 
-.overlay-game-over #retry-btn {
+.overlay-game-over #play-again-btn {
   background-color: #ffe5e5;
   color: #b00000;
   border: 2px solid #b00000;
 }
 
-.overlay-game-over #retry-btn:hover {
+.overlay-game-over #play-again-btn:hover {
   background-color: #ffcccc;
   transform: scale(1.05);
 }
 
-.overlay-game-won #retry-btn {
+.overlay-game-won #play-again-btn {
   background-color: #d0f5d0;
   color: #006400;
   border: 2px solid #006400;
 }
 
-.overlay-game-won #retry-btn:hover {
+.overlay-game-won #play-again-btn:hover {
   background-color: #b0e5b0;
   transform: scale(1.05);
 }

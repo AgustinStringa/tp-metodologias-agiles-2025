@@ -1,58 +1,58 @@
 Feature: Playing Hangman
   Try some letters!
 
-
 @winning
 Scenario Outline: Lets win
     Given word is "<word>"
-    When I try "<letters>" 
-    Then I should see "<answer>"
+    When I press the buttons for "<letters>" 
+    Then the message should be "<answer>"
 
-  Examples:
-    | word | letters  | answer |
-    | AUTO | AUTO     | WON    |
-    | PILA | PILA     | WON    |
-    | LOTE | LOTE     | WON    |
-    | CERO | CERO     | WON    |
+    Examples:
+    | word | letters  | answer           |
+    | AUTO | AUTO     | 🎉 ¡GANASTE! 🎉 |
+    | PILA | PILA     | 🎉 ¡GANASTE! 🎉 |
+    | LOTE | LOTE     | 🎉 ¡GANASTE! 🎉 |
+    | CERO | CERO     | 🎉 ¡GANASTE! 🎉 |
 
 
 @losing
 Scenario Outline: Lets lose
     Given word is "<word>"
-    When I try "<letters>"
-    Then I should see "<answer>"
+    When I press the buttons for "<letters>" 
+    Then the message should be "<answer>"
 
   Examples:
-    | word | letters   | answer |
-    | AUTO | ZPWKLMN   | LOST   |
-    | PILA | WRYTFOQ   | LOST   |
-    | LOTE | AUIFJWÑ   | LOST   |
-    | CERO | AIUSPLJ   | LOST   |
+    | word | letters   | answer            |
+    | AUTO | ZPWKLMN   | 💀 ¡PERDISTE! 💀 |
+    | PILA | WRYTFOQ   | 💀 ¡PERDISTE! 💀 |
+    | LOTE | AUIFJWÑ   | 💀 ¡PERDISTE! 💀 |
+    | CERO | AIUSPLJ   | 💀 ¡PERDISTE! 💀 |
 
 
 @winning
 Scenario Outline: Win is not so easy
     Given word is "<word>"
-    When I try "<letters>"
-    Then I should see "<answer>"
+    When I press the buttons for "<letters>" 
+    Then the message should be "<answer>"
 
   Examples:
-    | word     | letters        | answer |
-    | PLANETA  | PAZXYNLTE      | WON    |
-    | CARRITO  | CIOUVWKRTA     | WON    |
-    | ESCUELA  | SEZUXLBCHA     | WON    |
-    | RELOJERO | RQWLOZJE       | WON    |
+    | word     | letters        | answer           |
+    | PLANETA  | PAZXYNLTE      | 🎉 ¡GANASTE! 🎉 |
+    | CARRITO  | CIOUVWKRTA     | 🎉 ¡GANASTE! 🎉 |
+    | ESCUELA  | SEZUXLBCHA     | 🎉 ¡GANASTE! 🎉 |
+    | RELOJERO | RQWLOZJE       | 🎉 ¡GANASTE! 🎉 |
 
 
 @losing
 Scenario Outline: Try, fail, try again... lose
     Given word is "<word>"
-    When I try "<letters>"
-    Then I should see "<answer>"
+    When I press the buttons for "<letters>" 
+    Then the message should be "<answer>"
 
   Examples:
-    | word     | letters         | answer |
-    | CAMINO   | CAMXYZULET      | LOST   |
-    | NARANJA  | NARZXYWBTS      | LOST   |
-    | PELOTA   | PEXYLOZKQWÑ     | LOST   |
-    | GUITARRA | GITZXRMQUKWF    | LOST   |
+    | word     | letters         | answer            |
+    | CAMINO   | CAMXYZULET      | 💀 ¡PERDISTE! 💀 |
+    | NARANJA  | NARZXYWBTS      | 💀 ¡PERDISTE! 💀 |
+    | PELOTA   | PEXYLOZKQWÑ     | 💀 ¡PERDISTE! 💀 |
+    | GUITARRA | GITZXRMQUKWF    | 💀 ¡PERDISTE! 💀 |
+
