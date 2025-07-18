@@ -1,7 +1,7 @@
 Feature: Play again!
 
   @play-again
-  Scenario: Play again after winning the game
+  Scenario: Play again
     Given word is "<word>"
     When I press the buttons for "<letters>"
     Then the message should be "<message>"

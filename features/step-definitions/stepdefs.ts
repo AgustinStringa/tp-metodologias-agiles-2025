@@ -25,7 +25,7 @@ Then("the message should be {string}", async function (expectedAnswer) {
 
 // display-right-letters
 Then("word display should look like {string}", async function (expectedAnswer) {
-  const actual = await this["actor"].getWordDisplay();
+  const actual = await this["actor"].getWordDisplay(expectedAnswer);
   assert.strictEqual(actual, expectedAnswer);
 });
 
@@ -118,11 +118,12 @@ When("I press the play again button", async function () {
 Then(
   "the buttons for {string} should not look disabled",
   async function (lettersString) {
-	for(const letter of lettersString) {
-		const button = this["actor"].page.locator(`button#${letter}`);
-		await expect(button).toBeEnabled();
+    for (const letter of lettersString) {
+      const button = this["actor"].page.locator(`button#${letter}`);
+      await expect(button).toBeEnabled();
+    }
   }
-});
+);
 
 // hangman-statistics
 Then("I should see the stats {string}", async function (expectedStats: string) {

@@ -29,11 +29,26 @@ export class Actor {
   }
 
   async waitForComponent(selector: string, timeout = 7000): Promise<void> {
-  	await this.page.locator(selector).waitFor({ state: "visible", timeout });
+    await this.page.locator(selector).waitFor({ state: "visible", timeout });
   }
 
-  async getWordDisplay(): Promise<string> {
-		await this.waitForComponent(".word-display");
+  async getWordDisplay(expected: string): Promise<string> {
+    // con el waitForFunction me aseguro de que haya tiempo para que se rendericen las letras
+    await this.page.waitForFunction(
+      (expect: string) => {
+        const spans = document.querySelectorAll(".word-display span");
+        let result = "";
+        spans.forEach((span) => {
+          const content = span.textContent?.trim();
+          result += content === "" ? "_" : content;
+        });
+        return result === expect;
+      },
+      expected,
+      { timeout: 7000 }
+    );
+
+    await this.waitForComponent(".word-display");
     const labels = this.page.locator(".word-display span");
     const count = await labels.count();
     let wordDisplay = "";
@@ -103,31 +118,30 @@ export class Actor {
     return (await this.page.textContent("#solution"))?.trim() || "";
   }
 
-	async getValidWords(): Promise<string[]> {
-		const settings = await this.getCurrentSettings();
-		const wordsData = await import(
-			`../../src/core/resources/${settings.language}-${settings.difficulty}-words.json`
-		);
-		return wordsData.default.map((entry: { solution: string }) =>
-		entry.solution
-			.normalize("NFD")
-			.replace(/[\u0300-\u036f]/g, "")
-			.toUpperCase()
-		);
-	}
-	async waitForSetting(
-		prop: "language" | "difficulty",
-		expected: string,
-		timeout = 3000
-	): Promise<void> {
-		await this.page.waitForFunction(
-			(args: { prop: string; val: string }) => {
-				// eslint-disable-next-line @typescript-eslint/no-explicit-any
-				return (window as any).CURRENT_SETTINGS?.[args.prop] === args.val;
-			},
-			{ prop, val: expected },
-			{ timeout }
-		);
-	}
-
+  async getValidWords(): Promise<string[]> {
+    const settings = await this.getCurrentSettings();
+    const wordsData = await import(
+      `../../src/core/resources/${settings.language}-${settings.difficulty}-words.json`
+    );
+    return wordsData.default.map((entry: { solution: string }) =>
+      entry.solution
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toUpperCase()
+    );
+  }
+  async waitForSetting(
+    prop: "language" | "difficulty",
+    expected: string,
+    timeout = 3000
+  ): Promise<void> {
+    await this.page.waitForFunction(
+      (args: { prop: string; val: string }) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        return (window as any).CURRENT_SETTINGS?.[args.prop] === args.val;
+      },
+      { prop, val: expected },
+      { timeout }
+    );
+  }
 }
