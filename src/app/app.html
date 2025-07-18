@@ -3,9 +3,8 @@
 @if (gameReady) {
 <app-hangman-drawing></app-hangman-drawing>
 
-<app-word-display></app-word-display>
-
 @if (gameService.hangman!.getGameStatus() === "IN PROGRESS") {
+<app-word-display></app-word-display>
 <app-keyboard></app-keyboard>
 
 } @else if (gameService.hangman!.getGameStatus() === "LOST") {

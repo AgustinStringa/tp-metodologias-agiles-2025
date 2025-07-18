@@ -59,6 +59,7 @@
 
 #p-solution {
   font-size: 1.5rem;
+  animation: popIn 0.5s ease-out;
 }
 
 @keyframes fadeInOverlay {
