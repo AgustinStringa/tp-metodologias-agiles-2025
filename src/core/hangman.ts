@@ -4,7 +4,7 @@ import { GameStatus } from "./enums/game-status.enum";
 
 export class Hangman {
   word: string;
-  rawWord?: string;
+  rawWord: string;
   lives = 7;
   triedLetters: string[] = [];
   rightLetters: string[] = [];
@@ -99,6 +99,6 @@ export class Hangman {
     if (this.getGameStatus() === GameStatus.IN_PROGRESS)
       throw new Error("El juego está en curso.");
 
-    return this.word;
+    return this.rawWord;
   }
 }

@@ -26,4 +26,8 @@ export class App implements OnInit {
     await this.gameService.createHangman();
     this.gameReady = true;
   }
+
+  restartGame() {
+    this.gameService.createHangman(this.gameService.settings);
+  }
 }
