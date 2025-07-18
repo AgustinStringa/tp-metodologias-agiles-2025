@@ -25,22 +25,7 @@ Then("the message should be {string}", async function (expectedAnswer) {
 
 // display-right-letters
 Then("word display should look like {string}", async function (expectedAnswer) {
-  // me aseguro de que haya tiempo para que se rendericen las letras
-  await this["actor"].page.waitForFunction(
-    (expect: string) => {
-      const spans = document.querySelectorAll(".word-display span");
-      let result = "";
-      spans.forEach((span) => {
-        const content = span.textContent?.trim();
-        result += content === "" ? "_" : content;
-      });
-      return result === expect;
-    },
-    expectedAnswer,
-    { timeout: 7000 }
-  );
-
-  const actual = await this["actor"].getWordDisplay();
+  const actual = await this["actor"].getWordDisplay(expectedAnswer);
   assert.strictEqual(actual, expectedAnswer);
 });
 
@@ -83,28 +68,12 @@ When("I press save settings", async function () {
 Then(
   "the game should use a word of {string} difficulty",
   async function (expectedDifficulty) {
-    await this["actor"].page.waitForFunction(
-      (expected: string) => {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        return (window as any).CURRENT_SETTINGS?.difficulty === expected;
-      },
-      expectedDifficulty,
-      { timeout: 3000 }
-    );
+    await this["actor"].waitForSetting("difficulty", expectedDifficulty);
 
     const settings = await this["actor"].getCurrentSettings();
     const actualWord = await this["actor"].getCurrentWord();
 
-    const wordsData = await import(
-      `../../src/core/resources/${settings.language}-${settings.difficulty}-words.json`
-    );
-
-    const validWords = wordsData.default.map((entry: { solution: string }) =>
-      entry.solution
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .toUpperCase()
-    );
+    const validWords = await this["actor"].getValidWords();
 
     assert.ok(
       validWords.includes(actualWord),
@@ -121,14 +90,7 @@ When("I choose language {string}", async function (language) {
 Then(
   "the game should use words in {string}",
   async function (expectedLanguage) {
-    await this["actor"].page.waitForFunction(
-      (expected: string) => {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        return (window as any).CURRENT_SETTINGS?.language === expected;
-      },
-      expectedLanguage,
-      { timeout: 3000 }
-    );
+    await this["actor"].waitForSetting("language", expectedLanguage);
 
     const settings = await this["actor"].getCurrentSettings();
     const actualWord = await this["actor"].getCurrentWord();
@@ -139,16 +101,7 @@ Then(
       `Expected language "${expectedLanguage}", but got "${settings.language}"`
     );
 
-    const wordsData = await import(
-      `../../src/core/resources/${settings.language}-${settings.difficulty}-words.json`
-    );
-
-    const validWords = wordsData.default.map((entry: { solution: string }) =>
-      entry.solution
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .toUpperCase()
-    );
+    const validWords = await this["actor"].getValidWords();
 
     assert.ok(
       validWords.includes(actualWord),
@@ -163,10 +116,12 @@ When("I press the play again button", async function () {
 });
 
 Then(
-  "the button for {string} should not look disabled",
-  async function (letter) {
-    const button = this["actor"].page.locator(`button#${letter}`);
-    await expect(button).toBeEnabled();
+  "the buttons for {string} should not look disabled",
+  async function (lettersString) {
+    for (const letter of lettersString) {
+      const button = this["actor"].page.locator(`button#${letter}`);
+      await expect(button).toBeEnabled();
+    }
   }
 );
 
