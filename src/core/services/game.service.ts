@@ -21,6 +21,8 @@ export class GameService {
   ): Promise<void> {
     this.hangman = await Hangman.create(settings);
     this.settings = settings;
+    window.CURRENT_SETTINGS = settings;
+
     if (this.initialWord) {
       this.hangman.word = this.initialWord;
     } else if (typeof window !== "undefined" && window.INITIAL_WORD) {

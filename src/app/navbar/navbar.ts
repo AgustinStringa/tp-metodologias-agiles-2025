@@ -1,11 +1,12 @@
 import { Component, inject } from "@angular/core";
 import { GameService } from "../../core/services/game.service";
 import { GameSettings } from "../../core/interfaces/game-settings.interface";
-import { Settings } from "../settings/settings";
+import { HelpComponent } from "../help-dialog/help-dialog.js";
+import { Settings } from "../settings/settings.js";
 
 @Component({
   selector: "app-navbar",
-  imports: [Settings],
+  imports: [Settings, HelpComponent],
   templateUrl: "./navbar.html",
   styleUrl: "./navbar.css",
 })
@@ -20,5 +21,15 @@ export class Navbar {
   async onCloseDialog(newSettings: GameSettings | null) {
     if (newSettings !== null) await this.gameService.createHangman(newSettings);
     this.showSettings = !this.showSettings;
+  }
+
+  showHelp = false;
+
+  showHelpDialog() {
+    this.showHelp = true;
+  }
+
+  onCloseHelp() {
+    this.showHelp = false;
   }
 }

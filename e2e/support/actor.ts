@@ -68,6 +68,28 @@ export class Actor {
     return count;
   }
 
+  async getCurrentDifficulty(): Promise<string> {
+    return await this.page.evaluate(() => {
+      return (window as any).CURRENT_SETTINGS?.difficulty;
+    });
+  }
+
+  async getCurrentWord(): Promise<string> {
+    return await this.page.evaluate(() => {
+      return (window as any).ng.getComponent(document.querySelector("app-root"))
+        .gameService.hangman.word;
+    });
+  }
+
+  async getCurrentSettings(): Promise<{
+    language: string;
+    difficulty: string;
+  }> {
+    return await this.page.evaluate(() => {
+      return (window as any).CURRENT_SETTINGS;
+    });
+  }
+
   async stop() {
     await this.browser?.close();
   }

@@ -3,8 +3,8 @@
     <h2 class="modal-title">⚙️ Configuración</h2>
 
     <div class="form-group">
-      <label for="dificultad">Dificultad:</label>
-      <select id="dificultad" [(ngModel)]="selectedDifficulty">
+      <label for="difficulty-select">Dificultad:</label>
+      <select id="difficulty-select" [(ngModel)]="selectedDifficulty">
         <option value="easy">Fácil</option>
         <option value="medium">Media</option>
         <option value="hard">Difícil</option>
@@ -12,8 +12,8 @@
     </div>
 
     <div class="form-group">
-      <label for="idioma">Idioma:</label>
-      <select id="idioma" [(ngModel)]="selectedLanguage">
+      <label for="language-select">Idioma:</label>
+      <select id="language-select" [(ngModel)]="selectedLanguage">
         <option value="spanish">Español</option>
         <option value="portuguese">Portugués</option>
         <option value="french">Francés</option>
@@ -22,7 +22,9 @@
     </div>
 
     <div class="modal-actions">
-      <button class="btn btn-primary" (click)="save()">Guardar</button>
+      <button id="save-settings-btn" class="btn btn-primary" (click)="save()">
+        Guardar
+      </button>
       <button class="btn btn-secondary" (click)="onClose()">Cerrar</button>
     </div>
   </div>
