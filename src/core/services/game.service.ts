@@ -25,8 +25,10 @@ export class GameService {
 
     if (this.initialWord) {
       this.hangman.word = this.initialWord;
+      this.hangman.rawWord = this.initialWord;
     } else if (typeof window !== "undefined" && window.INITIAL_WORD) {
       this.hangman.word = window.INITIAL_WORD;
+      this.hangman.rawWord = window.INITIAL_WORD;
     }
     this.rightLetters$.next(this.hangman.getRightLetters());
     this.triedLetters$.next(this.hangman.getTriedLetters());
