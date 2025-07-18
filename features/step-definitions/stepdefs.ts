@@ -27,15 +27,16 @@ Then("the message should be {string}", async function (expectedAnswer) {
 Then("word display should look like {string}", async function (expectedAnswer) {
   // me aseguro de que haya tiempo para que se rendericen las letras
   await this["actor"].page.waitForFunction(
-    () => {
+    (expect: string) => {
       const spans = document.querySelectorAll(".word-display span");
       let result = "";
       spans.forEach((span) => {
         const content = span.textContent?.trim();
         result += content === "" ? "_" : content;
       });
-      return result;
+      return result === expect;
     },
+    expectedAnswer,
     { timeout: 7000 }
   );
 
@@ -171,6 +172,7 @@ Then(
 
 // hangman-statistics
 Then("I should see the stats {string}", async function (expectedStats: string) {
+  expectedStats = expectedStats.replace(/#/g, "|");
   const statsText = await this["actor"].page.textContent(".stats-text");
   assert.ok(
     statsText?.includes(expectedStats),

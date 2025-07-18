@@ -8,7 +8,7 @@ Scenario Outline: Watch hangman's arms and legs
 
     Examples:
     | word      | letters   | count |
-    | ABURRIDO  | AWEFO     | 3     | 
+    | ABURRIDO  | AWEFO     | 3     |
     | GUITARRA  | PGUL      | 2     |
     | FELICIDAD | OS        | 2     |
     | TRANQUILO | TRANQUILO | 0     |
