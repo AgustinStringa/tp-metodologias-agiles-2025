@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "jest",
+    "test": "jest --coverage",
     "lint": "eslint .",
     "testCucumber": "npx cross-env TS_NODE_PROJECT=tsconfig.cucumber.json cucumber-js --require-module ts-node/register --require features/**/*.ts",
     "start:e2e": "start-server-and-test start http://localhost:4200 testCucumber"

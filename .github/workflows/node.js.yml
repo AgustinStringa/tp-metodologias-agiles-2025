@@ -2,7 +2,8 @@ name: Hangman CI
 
 on:
   push:
-    branches: ["master", "user-interface", "refactor-acceptance-tests"]
+    branches:
+      ["master", "user-interface", "refactor-acceptance-tests", "sonar-config"]
   pull_request:
     branches: ["master"]
 
