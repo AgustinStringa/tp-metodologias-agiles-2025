@@ -5,7 +5,7 @@ import { GameStatus } from "./enums/game-status.enum";
 export class Hangman {
   word: string;
   rawWord: string;
-  lives = 7;
+  lives: number = 7;
   triedLetters: string[] = [];
   rightLetters: string[] = [];
 
@@ -53,7 +53,7 @@ export class Hangman {
       .replace(/ç/g, "c")
       .replace(/đ/g, "d")
       .replace(/__ENIE__/g, "Ñ")
-      .toLowerCase();
+      .toUpperCase();
   }
 
   tryLetter(letter: string) {
