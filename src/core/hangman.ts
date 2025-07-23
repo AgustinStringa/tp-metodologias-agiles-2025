@@ -45,12 +45,14 @@ export class Hangman {
 
   normalize(text: string): string {
     return text
+      .replace(/Ñ/g, "__ENIE__")
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "")
       .replace(/œ/g, "oe")
       .replace(/æ/g, "ae")
       .replace(/ç/g, "c")
       .replace(/đ/g, "d")
+      .replace(/__ENIE__/g, "Ñ")
       .toUpperCase();
   }
 

@@ -24,6 +24,9 @@
 } @else {
 <div class="overlay-game-won">
   <p id="game-status" class="overlay-text-won">🎉 ¡GANASTE! 🎉</p>
+  <p id="p-solution">
+    LA PALABRA ERA <b id="solution">{{gameService.hangman!.getAnswer()}}</b>
+  </p>
   <p class="stats-text">
     ✅ Aciertos: {{gameService.hangman!.getRightLetters().length}} | ❌ Errores:
     {{gameService.hangman!.getWrongLetters().length}} | 🎯 Intentos:
