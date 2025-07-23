@@ -5,7 +5,7 @@ import { GameStatus } from "./enums/game-status.enum";
 export class Hangman {
   word: string;
   rawWord: string;
-  lives: number = 7;
+  lives = 7;
   triedLetters: string[] = [];
   rightLetters: string[] = [];
 
