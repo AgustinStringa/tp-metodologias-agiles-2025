@@ -53,7 +53,7 @@ export class Hangman {
       .replace(/ç/g, "c")
       .replace(/đ/g, "d")
       .replace(/__ENIE__/g, "Ñ")
-      .toUpperCase();
+      .toLowerCase();
   }
 
   tryLetter(letter: string) {
